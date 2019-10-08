@@ -13,6 +13,7 @@
         </div>
     </div>
 @endsection
+<<<<<<< HEAD
 @section('sidenav')
     <a href="/home">Dashboard</a>
     <a href="/request">Request an Asset</a>
@@ -33,3 +34,8 @@
     <a href="/edit">Edit Profile</a>
     <a href="/history">View History</a>
 @endsection
+=======
+
+@section('sidenav')
+@endsection
+>>>>>>> Shubham2
