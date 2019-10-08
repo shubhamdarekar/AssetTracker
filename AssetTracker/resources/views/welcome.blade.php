@@ -3,9 +3,24 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        
 
         <title>{{config('app.name','TrackYourAssets')}}</title>
-
+        <!-- Jquery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function() {
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 270) {
+            $("#myid").addClass("myitem2");
+            $("#myid").removeClass("myitem");
+            } else {
+            $("#myid").addClass("myitem");
+            $("#myid").removeClass("myitem2");
+            }
+        });
+        });
+        </script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -86,17 +101,55 @@
                 perspective: 1000px;
                 background-color: transparent;
             }
-
             img{
                 height:600px;
-                margin-left: 10%;
             }
-
+            @media only screen and (min-width: 1500px){
             .vl{
                 border-left: 3px solid darkgray;
                 height: 500px;
                 margin-left: 9%;
                 margin-top: 2.5%;
+            }
+            .mainheading{
+                margin-left: 6%; 
+                text-align:center;
+                font-size: 90px;
+                margin-top: 12%;
+                -webkit-transition: font-size 1s;
+                -webkit-transition: margin-top 1s;
+            }
+            img
+            {
+                margin-left: 10%;
+            }
+            .imageparent{
+                width:auto;
+                align-content: center;
+                align-items: center;
+            }
+            }
+            @media only screen and (max-width: 1500px){
+                .mainheading{
+                margin-left: 6%; 
+                text-align:center;
+                font-size: 60px;
+                margin-top: 0%;
+                width: 100%;
+                -webkit-transition: font-size 1s;
+                -webkit-transition: margin-top 1s;
+            } 
+            .imageparent{
+               width: 100%;
+               align-self: center;
+               align-content: center;
+               align-items: center;
+            }
+            img
+            {
+                align-self: center;
+
+            }
             }
 
             #secondpart{
@@ -115,12 +168,26 @@
                 color:black;
                 height:30px;
             }
+            .myitem{
+                font-size: 0px;
+                width:0px;
+               
+            }
+            .myitem2{
+                font-size: 25px;
+                width:155px;
+                vertical-align: -webkit-baseline-middle;
+                
+            }
         </style>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body>
         <nav class="navbar navbar-expand-sm fixed-top" style="background-color: rgba(52, 165, 217,1)">  
             <ul class="navbar-nav">
+                    <li id = "myid" class="nav-item myitem">
+                            <a class="nav-link" href="/">TrackYourAssets</a>
+                       </li> 
                 @if(Route::has('login'))
                     @auth
                         <li class="nav-item">
@@ -147,9 +214,11 @@
         </nav>
               
         <div class="row" style="margin-top:8%;width:100%">
-            <h1 style="text-align:center;font-size: 100px;margin-top: 12%;margin-left: 6%">TrackYourAssets</h1>
+            <h1 class = "mainheading" >TrackYourAssets</h1>
             <div class="vl"></div>
-            <img src="images/landing.png" alt="photo" class="rounded-circle img-responsive">    
+            <div class = "imageparent">
+                <img src="images/landing.png" alt="photo" class=" img-responsive" >  
+            </div>  
         </div>
         <div id="row">
             <div class="row" style="margin-top: 3%">
@@ -212,6 +281,11 @@
                             </div>
                         </div>
                     </div>
+            </div>
+            <div class = "col-lg-12">
+                <div style="background-color:lightgrey; width:100%; height:200px">
+
+                </div>
             </div>
         </div>    
     </body>
