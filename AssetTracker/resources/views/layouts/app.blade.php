@@ -92,7 +92,7 @@
                 </a>
     <ul class = "navbar-nav mr-autostyle" style="float:right;margin-right:50px;list-style-type:none;">
         <li class="nav-item">
-            <a class="navbar-brand" href="#">Logout</a>
+            <a class="navbar-brand" href="/logout">Logout</a>
           </li>
     </ul>
     
