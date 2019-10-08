@@ -90,8 +90,10 @@
     <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'TrackYourAssets') }}
                 </a>
-    <ul style="float:right">
-      <li>Logout</li>
+    <ul class = "navbar-nav mr-autostyle" style="float:right;margin-right:50px;list-style-type:none;">
+        <li class="nav-item">
+            <a class="navbar-brand" href="#">Logout</a>
+          </li>
     </ul>
     
  {{-- <a href="\" class="w3-bar-item w3-button">Home</a>  --}}
