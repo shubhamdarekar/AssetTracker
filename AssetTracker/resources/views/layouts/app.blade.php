@@ -13,84 +13,106 @@
 </head>
 
 <body>
+    <style>
+        body {
+          font-family: "Lato", sans-serif;
+        }
+        
+        .sidenav {
+          height: 100%;
+          width: 0px;
+          position: fixed;
+          z-index: 1;
+          top: 15;
+          left: 0;
+          background-color: #005073;
+          overflow-x: hidden;
+          transition: 0.5s;
+          padding-top: 60px;
+        }
+        
+        .sidenav a {
+          padding: 8px 8px 8px 32px;
+          text-decoration: none;
+          font-size: 25px;
+          color: blue;
+          display: block;
+          transition: 0.3s;
+        }
+        
+        .sidenav a:hover {
+          color: black;
+        }
+        
+        .sidenav .closebtn {
+          position: absolute;
+          top: 0;
+          right: 25px;
+          font-size: 36px;
+          margin-left: 50px;
+        }
+        
+        @media screen and (max-height: 450px) {
+          .sidenav {padding-top: 10px;}
+          .sidenav a {font-size: 18px;}
+        }
+        </style>
+
+<script>
+    function openNav() {
+        console.log(document.getElementById("mySidenav").style.width)
+        if(document.getElementById("mySidenav").style.width == "15%"){
+            document.getElementById("mySidenav").style.width = "0px";
+            document.getElementById("maincontent").style.marginLeft = "0%";
+            document.getElementById("maincontent").style.width = "100%";
+            ;
+            
+        }else{
+            document.getElementById("mySidenav").style.width = "15%";
+            document.getElementById("maincontent").style.marginLeft = "15%";
+            document.getElementById("maincontent").style.width = "85%"
+            
+        }
+      
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("maincontent").style.width = "100%";
+            document.getElementById("maincontent").style.marginLeft = "0%";
+    }
+    </script>
 
 <div class="w3-bar w3-blue" style = " height: 50px;">
-<span class="w3-bar-item w3-button" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span>
+@auth
+  <span class="w3-bar-item w3-button" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span>
+@endauth
     <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'TrackYourAssets') }}
                 </a>
+    <ul style="float:right">
+      <li>Logout</li>
+    </ul>
     
-    
-  <!-- <a href="#" class="w3-bar-item w3-button">Home</a> -->
-  <!-- <a href="#" class="w3-bar-item w3-button">Login</a>
-  <a href="#" class="w3-bar-item w3-button">Register</a> -->
+ {{-- <a href="\" class="w3-bar-item w3-button">Home</a>  --}}
+   {{-- <a href="#" class="w3-bar-item w3-button">Login</a>
+  <a href="#" class="w3-bar-item w3-button">Register</a> --}}
   
 </div>
-<style>
-body {
-  font-family: "Lato", sans-serif;
-}
 
-.sidenav {
-  height: 100%;
-  width: 0px;
-  position: fixed;
-  z-index: 1;
-  top: 15;
-  left: 0;
-  background-color: #005073;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
-
-.sidenav a {
-  padding: 8px 8px 8px 32px;
-  text-decoration: none;
-  font-size: 25px;
-  color: blue;
-  display: block;
-  transition: 0.3s;
-}
-
-.sidenav a:hover {
-  color: black;
-}
-
-.sidenav .closebtn {
-  position: absolute;
-  top: 0;
-  right: 25px;
-  font-size: 36px;
-  margin-left: 50px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidenav {padding-top: 10px;}
-  .sidenav a {font-size: 18px;}
-}
-</style>
+@auth
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  @yield('sidenav')
+</div>
+@endauth
+
+<div id="maincontent" style="width:100%;transition : 0.5s;">
+@yield('content')
 </div>
 
 
 
-<script>
-function openNav() {
-    console.log(document.getElementById("mySidenav").style.width)
-    if(document.getElementById("mySidenav").style.width == "250px"){
-        document.getElementById("mySidenav").style.width = "0px";
-    }else{
-        document.getElementById("mySidenav").style.width = "250px";
-    }
-  
-}
-
-function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
-}
-</script>
    
 <!-- <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
