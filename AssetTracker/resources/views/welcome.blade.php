@@ -141,13 +141,14 @@
             } 
             .imageparent{
                width: 100%;
-               align-self: center;
-               align-content: center;
-               align-items: center;
+               align-self: center!important;
+               align-content: center!important;
+               align-items: center!important;
             }
             img
             {
-                align-self: center;
+                align-self: center!important;
+                text-align: center!important;
 
             }
             }
@@ -171,12 +172,16 @@
             .myitem{
                 font-size: 0px;
                 width:0px;
+                transition:all 0.2s ease-in;
                
             }
             .myitem2{
+                padding-top: 0%!important;
                 font-size: 25px;
                 width:155px;
                 vertical-align: -webkit-baseline-middle;
+                transition:all 0.2s ease-in;
+                padding-bottom: 10px;
                 
             }
         </style>
@@ -186,7 +191,7 @@
         <nav class="navbar navbar-expand-sm fixed-top" style="background-color: rgba(52, 165, 217,1)">  
             <ul class="navbar-nav">
                     <li id = "myid" class="nav-item myitem">
-                            <a class="nav-link" href="/">TrackYourAssets</a>
+                            <a class="nav-link" style="padding:0%;" href="/">TrackYourAssets</a>
                        </li> 
                 @if(Route::has('login'))
                     @auth
