@@ -92,7 +92,7 @@
                 </a>
     <ul class = "navbar-nav mr-autostyle" style="float:right;margin-right:50px;list-style-type:none;">
         <li class="nav-item">
-            <a class="navbar-brand" href="/logout">Logout</a>
+            <a class="navbar-brand" href="#">Logout</a>
           </li>
     </ul>
     
@@ -104,7 +104,6 @@
 
 @auth
 <div id="mySidenav" class="sidenav">
-  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   @yield('sidenav')
 </div>
 @endauth
