@@ -21,6 +21,5 @@
     </div>
 </div>
 @endsection
-
 @section('sidenav')
 @endsection
