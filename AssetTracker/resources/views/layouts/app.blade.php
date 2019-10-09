@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ asset('css/app2.css')}}">
   <link rel="stylesheet" href="{{ asset('css/app3.css')}}">
+
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -25,7 +26,7 @@
           z-index: 1;
           top: 15;
           left: 0;
-          background-color: #005073;
+          background-color: #fff;
           overflow-x: hidden;
           transition: 0.5s;
           padding-top: 60px;
