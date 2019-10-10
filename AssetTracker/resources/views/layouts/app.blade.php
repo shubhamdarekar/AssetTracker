@@ -26,7 +26,7 @@
           z-index: 1;
           top: 15;
           left: 0;
-          background-color: #fff;
+          background-color: #aaa;
           overflow-x: hidden;
           transition: 0.5s;
           padding-top: 60px;
@@ -36,13 +36,13 @@
           padding: 8px 8px 8px 32px;
           text-decoration: none;
           font-size: 25px;
-          color: blue;
+          color: black;
           display: block;
           transition: 0.3s;
         }
         
         .sidenav a:hover {
-          color: black;
+          color: white;
         }
         
         .sidenav .closebtn {
