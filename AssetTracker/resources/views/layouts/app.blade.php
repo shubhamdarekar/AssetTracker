@@ -52,11 +52,34 @@
           font-size: 36px;
           margin-left: 50px;
         }
+
+        #sidenavButton hover{
+          background-color: rgba(52, 165, 217,1);
+        }
         
         @media screen and (max-height: 450px) {
           .sidenav {padding-top: 10px;}
           .sidenav a {font-size: 18px;}
         }
+
+        /* @media screen and (min-width:1500px){
+          .sidenav{
+            width: 15%;
+          }
+          .maincontent{
+            margin-left: 15%!important;
+            width:85%;
+          }
+        }
+        @media screen and (max-width:1500px){
+          .sidenav{
+            width: 0%; 
+          }
+          .maincontent{
+            margin-left: 0%!important;
+            width:100%;
+          }
+        } */
         </style>
 
 <script>
@@ -68,14 +91,14 @@
             document.getElementById("maincontent").style.width = "100%";
             ;
             
-        }else{
+        }
+        else{
             document.getElementById("mySidenav").style.width = "15%";
             document.getElementById("maincontent").style.marginLeft = "15%";
-            document.getElementById("maincontent").style.width = "85%"
-            
+            document.getElementById("maincontent").style.width = "85%";            
         }
       
-    }
+    } 
     
     function closeNav() {
       document.getElementById("mySidenav").style.width = "0";
@@ -84,9 +107,9 @@
     }
     </script>
 
-<div class="w3-bar w3-blue" style = " height: 50px;">
+<div class="w3-bar" style="height: 50px;background-color: rgb(52,165,217)">
 @auth
-  <span class="w3-bar-item w3-button" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776</span>
+  <span class="w3-bar-item" style="font-size:30px;cursor:pointer" onclick="openNav()" id="sidenavButton">&#9776</span>
 @endauth
     <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'TrackYourAssets') }}
@@ -105,7 +128,33 @@
 
 @auth
 <div id="mySidenav" class="sidenav">
-  @yield('sidenav')
+  <a href="/home">Dashboard</a>
+  <a href="/home/issue">Issue Asset</a>
+  @if(Auth::user()->role==3 || Auth::user()->role==4 || Auth::user()->role==5)
+    <a href="/home/create">Create Asset</a>
+  @endif
+  @if(Auth::user()->role==1 || Auth::user()->role==2)
+    <a href="/home/requestnewasset">Request New Asset</a>
+  @endif
+  @if(Auth::user()->role==3 || Auth::user()->role==4)
+    <a href="/home/newassetrequests">New Asset Requests</a>
+  @endif
+  @if(Auth::user()->role==2 || Auth::user()->role==3)
+      <a href="/home/requests">Asset Requests</a>
+  @endif
+  @if(Auth::user()->role==3 || Auth::user()->role==4 || Auth::user()->role==5)
+      <a href="/home/fine">Fine Users</a>
+  @endif
+  <a href="/home/file">File an issue</a>
+  @if(Auth::user()->role==4)
+      <a href="/home/otherDepartmentDetails">Other Dept. Assets</a>
+  @endif
+  @if(Auth::user()->role==5 || Auth::user()->role==4)
+      <a href="/home/purchase">Place Order</a>
+  @endif
+  <hr style="margin-left:7.5%;width:85%">
+  <a href="/home/edit">Edit Profile</a>
+    <a href="/home/history">View History</a>
 </div>
 @endauth
 

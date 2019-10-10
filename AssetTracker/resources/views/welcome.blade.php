@@ -28,7 +28,7 @@
         <style>
             html, body {
                 background-color: transparent;
-                color: #636b6f;
+                color: #fff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 margin: 0;
