@@ -3,6 +3,7 @@
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/app.css')}}">
 <div class="container">
+    <link rel="stylesheet" href="{{ asset('css/app.css')}}">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
