@@ -149,6 +149,9 @@
             {
                 align-self: center!important;
                 text-align: center!important;
+                margin-left: auto;
+                margin-right: auto;
+                display: block;
 
             }
             }
@@ -213,7 +216,7 @@
                         <a class="nav-link" href="#about">About</a>
                     </li> 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
+                        <a class="nav-link" href="#contact">Contact</a>
                     </li>    
             </ul>
         </nav>
@@ -222,17 +225,17 @@
             <h1 class = "mainheading" >TrackYourAssets</h1>
             <div class="vl"></div>
             <div class = "imageparent">
-                <img src="images/landing.png" alt="photo" class=" img-responsive" >  
+                <img src="images/landing.png" alt="photo" class="img-responsive">  
             </div>  
         </div>
-        <div id="row">
+        <div id="about">
             <div class="row" style="margin-top: 3%">
                 <div class="container col-lg-5">
                     <div class="card card-block d-flex">
                         <div class="front face">
                             <div class="card-body align-items-center d-flex justify-content-center">
                                 <img src="/images/download.png" alt="photo" style="height:150px;margin-top:6%;">
-                                <h1 style="margin-top: 6%">One stop to manage your assets</h1>
+                                <h1 style="margin-top:6%">One stop to manage your assets</h1>
                             </div>
                         </div>
                         <div class="back face">
@@ -287,8 +290,8 @@
                         </div>
                     </div>
             </div>
-            <div class = "col-lg-12">
-                <div style="background-color:lightgrey; width:100%; height:200px">
+            <div class = "col-lg-12" id="contact">
+                <div style="background-color:white; width:100%; height:200px">
 
                 </div>
             </div>

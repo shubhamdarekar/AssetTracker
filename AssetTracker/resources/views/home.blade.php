@@ -28,6 +28,9 @@
 @section('sidenav')
     <a href="/home">Dashboard</a>
     <a href="/request">Request an Asset</a>
+    @if(Auth::user()->role=3 || Auth::user()->role=4 || Auth::user()->role=5)
+        <a href="">Create Asset</a>
+    @endif
     @if(Auth::user()->role==2 || Auth::user()->role==3)
         <a href="/requests">Asset Requests</a>
     @endif
