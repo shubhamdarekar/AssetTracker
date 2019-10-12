@@ -31,3 +31,6 @@ route::get('/home/purchase','DashboardController@purchase');
 route::get('/home/edit','DashboardController@edit');
 route::get('/home/requestnewasset','DashboardController@newasset');
 route::get('/home/newassetrequests','DashboardController@assetrequests');
+
+route::post('/home/issue/store','AssetsController@store');
+route::post('home/create/store','AssetsController@create');

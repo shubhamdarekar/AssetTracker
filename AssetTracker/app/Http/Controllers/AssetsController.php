@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\issuedBy;
+use App\asset;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AssetsController extends Controller
 {
@@ -23,7 +27,7 @@ class AssetsController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -34,7 +38,34 @@ class AssetsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // echo'Its okay';
+        $this->validate($request,[
+            'assetDropdown' => 'required',
+            'assetQuantity' => 'required'
+        ]);
+        // return($request->input('assetQuantity'));
+        $asset = new asset();
+        $issuedBy = new issuedBy();
+        $itemId = $request->input('assetDropdown');
+        $itemQuantity = $request->input('assetQuantity');
+        // $remainingQuantity = asset::find($itemId)->remainingQuantity;
+        $rq = asset::get()->where('id','=',$itemId);
+        $remainingQuantity = ($rq[0]['remainingQuantity']);
+        if($remainingQuantity > 0){
+            if($itemQuantity <= $remainingQuantity){
+                $issuedBy->userId = Auth::user()->id;
+                $issuedBy->itemIssued = $itemId;
+                $issuedBy->quantityIssued = $itemQuantity;
+                // return(Auth::user()->id);
+                $issuedBy->save();
+                return redirect('/home/issue')->with('success','Request Successful');
+            }else{
+                echo "<script>document.getElementById('demo').innerHTML('This much quantity not available')</script>";
+            } 
+        }
+        else{
+            echo"<script>documet.getElementById('demo').innerHTML('This asset is not available');</script>";
+        }
     }
 
     /**
@@ -42,7 +73,7 @@ class AssetsController extends Controller
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
-     */
+     */ 
     public function show($id)
     {
         //
