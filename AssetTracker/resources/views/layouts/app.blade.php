@@ -130,7 +130,7 @@
 <div id="mySidenav" class="sidenav">
   <a href="/home">Dashboard</a>
   <a href="/home/issue">Issue Asset</a>
-  @if(Auth::user()->role==3 || Auth::user()->role==4 || Auth::user()->role==5)
+  @if(Auth::user()->role==4 || Auth::user()->role==5)
     <a href="/home/create">Create Asset</a>
   @endif
   @if(Auth::user()->role==1 || Auth::user()->role==2)
