@@ -37,7 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function assets(){
-        return $this->hasMany('App\assets');
+    public function assetRequest(){
+        return $this->hasMany('App\assetRequest');
     }
 }

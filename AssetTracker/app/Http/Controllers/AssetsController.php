@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\issuedBy;
 use App\asset;
+use App\userIssues;
 use App\orders;
-use App\totalQuantity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -122,7 +122,22 @@ class AssetsController extends Controller
      */ 
     public function show($id)
     {
-        //
+        $requests = issuedBy::find($id);
+        return view('dashboard.requests')->with('requests',$requests);
+    }
+
+    public function fileIssues(Request $request){
+        $this->validate($request,[
+            'fileSubject' => 'required',
+            'fileIssue' => 'required'
+        ]);
+
+        $issue = new userIssues();
+        $issue->userId = Auth::user()->id;
+        $issue->Subject = $request->input('fileSubject');
+        $issue->issueFaced = $request->input('fileIssue');
+        $issue->save();
+        return redirect('/home/file')->with('success','Issue Filed');
     }
 
     /**

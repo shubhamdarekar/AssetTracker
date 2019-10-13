@@ -162,7 +162,8 @@
 @endauth
 
 <div id="maincontent" style="width:100%;transition : 0.5s;">
-@yield('content')
+  @include('layouts.messages');
+  @yield('content')
 </div>
 
 
