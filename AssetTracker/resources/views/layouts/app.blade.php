@@ -4,6 +4,7 @@
   <title>{{ config('app.name', 'Laravel') }}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {{-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> --}}
   <link rel="stylesheet" href="{{ asset('css/app2.css')}}">
   <link rel="stylesheet" href="{{ asset('css/app3.css')}}">
 
@@ -56,6 +57,23 @@
         #sidenavButton hover{
           background-color: rgba(52, 165, 217,1);
         }
+        
+        .container {
+          position: absolute;
+          /* background: #000; */
+          left: 50%;
+         top: 26%;
+         font-size: 25px;
+         
+          height: 200px;
+          margin-top: -100px /* half of you height */
+    width: 400px;
+    margin-left: -250px
+} 
+ .container2
+    {
+         font-size: 20px;
+    }
         
         @media screen and (max-height: 450px) {
           .sidenav {padding-top: 10px;}
@@ -119,11 +137,7 @@
             <a class="navbar-brand" href="\logout">Logout</a>
           </li>
     </ul>
-    
- {{-- <a href="\" class="w3-bar-item w3-button">Home</a>  --}}
-   {{-- <a href="#" class="w3-bar-item w3-button">Login</a>
-  <a href="#" class="w3-bar-item w3-button">Register</a> --}}
-  
+
 </div>
 
 @auth
@@ -168,27 +182,5 @@
 
 
    
-<!-- <div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left" style="width:200px;" id="mySidebar">
-  <button class="w3-bar-item w3-button w3-large w3-hide-large" onclick="w3_close()">Close &times;</button>
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-</div>
-
-<div class="w3-main" style="margin-left:200px">
-<div class="w3-white">
-  <button class="w3-button w3-xlarge w3-hide-large" onclick="w3_open()"></button>
-  </div>
-
-</div>
-
-<script>
-function w3_open() 
-{
-  document.getElementById("mySidebar").style.display = "block";
-}
-
-function w3_close() {
-  document.getElementById("mySidebar").style.display = "none";
-}
-</script> -->
 </body>
 </html>
