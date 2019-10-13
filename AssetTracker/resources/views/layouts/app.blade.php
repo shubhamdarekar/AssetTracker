@@ -146,6 +146,9 @@
       <a href="/home/fine">Fine Users</a>
   @endif
   <a href="/home/file">File an issue</a>
+  @if(Auth::user()->role==3 || Auth::user()->role==4 || Auth::user()->role==5)
+      <a href="/home/viewissues">View User Issues</a>
+  @endif
   @if(Auth::user()->role==4)
       <a href="/home/otherDepartmentDetails">Other Dept. Assets</a>
   @endif

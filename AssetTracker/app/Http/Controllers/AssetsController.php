@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\issuedBy;
 use App\asset;
+use App\orders;
+use App\totalQuantity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -15,9 +17,21 @@ class AssetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $this->validate($request,[
+            'purchaseDropdown' => 'required',
+            'purchaseQuantity' => 'required',
+            'purchaseAmount' => 'required'
+        ]);
+
+        $order = new orders();
+        $order->orderedBy = Auth::user()->id;
+        $order->assetOrdered = $request->input('purchaseDropdown');
+        $order->quantityOrdered = $request->input('purchaseQuantity');
+        $order->amountToBePaid = $request->input('purchaseAmount');
+        $order->save();
+        return redirect('/home/purchase')->with('success','AssetOrdered');
     }
 
     /**
@@ -25,14 +39,44 @@ class AssetsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        
+        $this->validate($request,[
+            'createAssetName' => 'required',
+            'createAssetQuantity' => 'required',
+            'createAssetDepartment' => 'required'
+        ]);
+
+        $ids = asset::get();
+        $name = $request->input('createAssetName');
+        $quantity = $request->input('createAssetQuantity');
+        $dept = $request->input('createAssetDepartment');
+        foreach($ids as $id){
+            if($name == $id->name && $dept == $id->belongsToDept){
+                return redirect('/home/create')->with('success','Asset already exists');
+                break;
+            }
+        }   
+        $asset = new asset();
+        $asset->name = $name;
+        $asset->belongsToDept = $request->input('createAssetDepartment');
+        $asset->totalQuantity = $request->input('createAssetQuantity');
+        $asset->remainingQuantity = $request->input('createAssetQuantity');
+        $asset->save();
+        return redirect('home/create')->with('success','Asset Created');
+        // echo($name);
+        // echo($quantity);
+        // $totalId = asset::get()->where('name','=',$name);
+        // echo($totalId);
+        // $totalQuantityRow = asset::get()->where('name','=',$name);
+        // echo($totalQuantityRow);
+        // $Id = ($totalQuantityRow[0]['id']);
+        // echo($Id);
     }
 
     /**
      * Store a newly created resource in storage.
-     *
+     *  
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -50,7 +94,9 @@ class AssetsController extends Controller
         $itemQuantity = $request->input('assetQuantity');
         // $remainingQuantity = asset::find($itemId)->remainingQuantity;
         $rq = asset::get()->where('id','=',$itemId);
+        echo($rq);
         $remainingQuantity = ($rq[0]['remainingQuantity']);
+        echo($remainingQuantity);
         if($remainingQuantity > 0){
             if($itemQuantity <= $remainingQuantity){
                 $issuedBy->userId = Auth::user()->id;
@@ -60,7 +106,7 @@ class AssetsController extends Controller
                 $issuedBy->save();
                 return redirect('/home/issue')->with('success','Request Successful');
             }else{
-                echo "<script>document.getElementById('demo').innerHTML('This much quantity not available')</script>";
+                echo "<script>document.getElementById('demo').innerHTML('This much quantity is not available')</script>";
             } 
         }
         else{

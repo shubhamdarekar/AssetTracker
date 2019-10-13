@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function issue(){
-        return view('dashboard.requestAsset');
+        return view('dashboard.issueAsset');
     }
 
     public function create(){
@@ -31,7 +31,7 @@ class DashboardController extends Controller
         return view('dashboard.history');
     }
 
-    public function assetrequests()
+    public function newasset()
     {
         return view('dashboard.newassetrequests');
     }
@@ -49,5 +49,13 @@ class DashboardController extends Controller
     public function edit()
     {
         return view('dashboard.edit');
+    }
+
+    public function assetrequests(){
+        return view('dashboard.requestNewAsset');
+    }
+
+    public function viewissues(){
+        return view('dashboard.viewIssues');
     }
 }
