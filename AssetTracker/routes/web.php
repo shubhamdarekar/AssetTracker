@@ -22,7 +22,7 @@ Route::get('/logout', 'Auth\LoginController@logout');
 
 route::get('/home/issue','DashboardController@issue'); //issue asset
 route::get('/home/create','DashboardController@create'); //create asset
-route::get('/home/requests','DashboardController@requests'); //view the asset request
+route::get('/home/requests','AssetsController@show'); //view the asset request
 route::get('/home/fine','DashboardController@fine'); //fine users
 route::get('/home/file','DashboardController@file'); //file issues
 route::get('/home/viewissues','DashboardController@viewissues'); //view issues
@@ -40,3 +40,4 @@ route::post('home/create/store','AssetsController@create'); //create asset
 route::post('/home/purchase/index','AssetsController@index'); //order asset 
 route::post('/home/assignedRole','AssetsController@assignrole');//assigns role
 route::post('/home/changedRole','AssetsController@changerole');//changess role
+route::post('/home/file/fileissues','AssetsController@fileIssues');
