@@ -7,6 +7,8 @@ use App\issuedBy;
 use App\asset;
 use App\userIssues;
 use App\orders;
+use App\userIssues;
+use App\totalQuantity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -215,4 +217,31 @@ class AssetsController extends Controller
     {
         //
     }
+   
+    public function file(Request $request)
+    {
+        $this->validate($request,[
+            'filename' => 'required',
+            'fileissue' => 'required'
+        ]);
+        // $asset = new asset();
+        // $userIssues = new userIssues();
+        $name = $request->input('filename');
+        $issues = $request->input('fileissue');
+        // $userIssues = new userIssues();
+        // $userIssues->userId = Auth::user()->id;
+        // $userIssues->assetid = $name;
+        // $userIssues->issueFaced = $issues;
+        // $userIssues->save();
+        DB::table('userissues')->insert(['userId'=>Auth::user()->id,'assetid'=>$name,'issueFaced'=>$issues]);
+        return redirect('home/file')->with('success','Issue Filed');
+    }
+    /**
+     * Store a newly created resource in storage.
+     *  
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+        
 }
+

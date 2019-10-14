@@ -41,3 +41,4 @@ route::post('/home/purchase/index','AssetsController@index'); //order asset
 route::post('/home/assignedRole','AssetsController@assignrole');//assigns role
 route::post('/home/changedRole','AssetsController@changerole');//changess role
 route::post('/home/file/fileissues','AssetsController@fileIssues');
+route::post('/home/issue/file','AssetsController@file'); //fileissue
