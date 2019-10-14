@@ -58,4 +58,12 @@ class DashboardController extends Controller
     public function viewissues(){
         return view('dashboard.viewIssues');
     }
+
+    public function assignrole(){
+        return view('dashboard.assignRole');
+    }
+
+    public function changerole(){
+        return view('dashboard.changeRole');
+    }
 }

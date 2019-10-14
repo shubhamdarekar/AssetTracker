@@ -4,6 +4,7 @@
 ?>
 @extends('layouts.app')
 @section('content')
+            <div clas="form-group row">
     <link rel="stylesheet" href="{{asset('css/app.css')}}'">
     <div class="container">
         <br><br>
