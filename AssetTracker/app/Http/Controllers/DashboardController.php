@@ -33,7 +33,7 @@ class DashboardController extends Controller
 
     public function newasset()
     {
-        return view('dashboard.newassetrequests');
+        return view('dashboard.requestNewAssets');
     }
 
     public function otherDepartmentDetails()

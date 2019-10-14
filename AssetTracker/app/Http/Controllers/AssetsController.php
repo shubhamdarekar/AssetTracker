@@ -235,6 +235,23 @@ class AssetsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+     public function newasset(Request $request)
+     {
+        $this->validate($request,[
+            'newassetname' => 'required',
+            'newdescription' => 'required',
+            'newquantity' => 'required'
+        ]);
+        $name = $request->input('newassetname');
+        $description = $request->('newdescription');
+        $quantity = $request->('newquantity');
+        DB::table('newassetrequests')->insert(['userId'=>Auth::user()->id,'assetOrdered'=>$name]);
+        return redirect('home/requestNewAssets')->with('success', 'New Asset Oredered');
+        // $ids = newassetrequests::get();
+
+
+     }
+
         
 }
 

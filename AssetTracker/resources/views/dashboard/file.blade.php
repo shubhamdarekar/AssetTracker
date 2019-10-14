@@ -21,7 +21,7 @@
             </div>
             <div class="form-group row">
                 <label clas="col-3">Issue</label>
-                <input type="text" class="form-control col-2" name="fileissue">
+                <textarea type="text" class="form-control col-2" name="fileissue"></textarea>
             </div>
             <div class="form-group row">
                 <div class="col-4">
