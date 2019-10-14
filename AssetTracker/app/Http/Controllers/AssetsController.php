@@ -93,24 +93,32 @@ class AssetsController extends Controller
         $itemId = $request->input('assetDropdown');
         $itemQuantity = $request->input('assetQuantity');
         // $remainingQuantity = asset::find($itemId)->remainingQuantity;
-        $rq = asset::get()->where('id','=',$itemId);
-        echo($rq);
-        $remainingQuantity = ($rq[0]['remainingQuantity']);
-        echo($remainingQuantity);
+        // $rq = asset::get()->where('id','=',$itemId);
+        $remaining = DB::table('assets')->where('id','=',$itemId)->select('remainingQuantity')->first();
+        // $remainingQuantity = json_decode($remainingQuantity, false);
+        // echo($rq);
+        // $remainingQuantity = ($rq[0]['remainingQuantity']);
+        $remainingQuantity = $remaining->remainingQuantity;
         if($remainingQuantity > 0){
             if($itemQuantity <= $remainingQuantity){
-                $issuedBy->userId = Auth::user()->id;
-                $issuedBy->itemIssued = $itemId;
-                $issuedBy->quantityIssued = $itemQuantity;
+                // $issuedBy->userId = Auth::user()->id;
+                // $issuedBy->itemIssued = $itemId;
+                // $issuedBy->quantityIssued = $itemQuantity;
                 // return(Auth::user()->id);
-                $issuedBy->save();
+                DB::table('issuedby')->insert(
+                    ['userId' =>Auth::user()->id, 'itemIssued' => $itemId,'quantityIssued'=>$itemQuantity]
+                );
+                DB::table('assets')
+                ->where('id', $itemId)
+                ->update(['remainingQuantity' =>($remainingQuantity- $itemQuantity)]);
+                // $issuedBy->save();
                 return redirect('/home/issue')->with('success','Request Successful');
             }else{
-                echo "<script>document.getElementById('demo').innerHTML('This much quantity is not available')</script>";
+                return redirect('/home/issue')->with('error','Not Enough Assets available');
             } 
         }
         else{
-            echo"<script>documet.getElementById('demo').innerHTML('This asset is not available');</script>";
+            return redirect('/home/issue')->with('error','0 Asstes available');
         }
     }
 
@@ -128,7 +136,6 @@ class AssetsController extends Controller
         ]);
         $userid = $request->input('userDropdown');
         $role = $request->input('roleDropdown');
-        echo $role;
         DB::table('users')
             ->where('id', $userid)
             ->update(['role' => $role]);

@@ -2,7 +2,7 @@
 {{-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> --}}
 @section('content')
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div class="container" >
+<div  class="border" style="height:fit-content;padding:10px;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -57,13 +57,13 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="width:150px; font-size:75%; margin-left: -16px;margin-top:20px;font-family:georgia;">
+                                <button type="submit" class="btn btn-primary" style="width:150px; font-size:75%; margin-left: 16px;margin-top:20px;font-family:georgia;">
                                     {{ __('Login') }}
                                 </button>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request')}}" style="margin-top:20px;
-                                    margin-left: -25px;font-family:georgia;">
+                                    margin-left: 25px;font-family:georgia;">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
@@ -74,7 +74,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </span>
 </div>
 
 @endsection
