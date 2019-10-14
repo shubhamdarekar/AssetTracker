@@ -32,7 +32,11 @@ route::get('/home/purchase','DashboardController@purchase'); //purchase assets
 route::get('/home/edit','DashboardController@edit'); //edit profile
 route::get('/home/requestnewasset','DashboardController@newasset'); //request for a new asset
 route::get('/home/newassetrequests','DashboardController@assetrequests'); //see the new asset requests
+route::get('/home/assignrole','DashboardController@assignrole');//Assignrole to user
+route::get('/home/changerole','DashboardController@changerole');//change role ofuser user
 
 route::post('/home/issue/store','AssetsController@store'); //issue asset
 route::post('home/create/store','AssetsController@create'); //create asset 
 route::post('/home/purchase/index','AssetsController@index'); //order asset 
+route::post('/home/assignedRole','AssetsController@assignrole');//assigns role
+route::post('/home/changedRole','AssetsController@changerole');//changess role

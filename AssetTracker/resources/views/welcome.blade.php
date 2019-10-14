@@ -131,7 +131,7 @@
             }
             @media only screen and (max-width: 1500px){
                 .mainheading{
-                margin-left: 6%; 
+                margin-left: 0%; 
                 text-align:center;
                 font-size: 60px;
                 margin-top: 0%;
@@ -192,32 +192,33 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-sm fixed-top" style="background-color: rgba(52, 165, 217,1)">  
-            <ul class="navbar-nav">
-                    <li id = "myid" class="nav-item myitem">
-                            <a class="nav-link" style="padding:0%;" href="/">TrackYourAssets</a>
-                       </li> 
+                
+                    
+
+                            <a id ="myid" class="nav-item myitem" style="padding:0%; color:black; margin-right:5%" href="/">TrackYourAssets</a>
+                <div class="collapse navbar-collapse justify-content-between" id="navbar">
+                        <div class="navbar-nav">
                 @if(Route::has('login'))
                     @auth
-                        <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/home') }}">Home</a>
-                        </li>
-                        @else
-                        <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login') }}">Login</a>
-                        </li>
+                        <a class="nav-item nav-link" href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a class="nav-item nav-link" href="{{ url('login') }}">Login</a>
                             @if(Route::has('register'))
-                                <li class="nav-item">
-                                <a class="nav-link" href="{{ url('register') }}">Register</a>
-                                </li>
+                                <a class="nav-item nav-link" href="{{ url('register') }}">Register</a>
                             @endif
                     @endauth
                 @endif
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
-                    </li> 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>    
+                    <a class="nav-item nav-link" href="#about">About</a>
+
+                    <a class="nav-item nav-link" href="#contact">Contact</a>
+                    </div>
+                @auth
+                <div class="navbar-nav">
+                        <a class="nav-item nav-link" href="\logout">LogOut</a>
+                </div> 
+                @endauth
+                </div>
+                    
             </ul>
         </nav>
               
@@ -291,10 +292,27 @@
                     </div>
             </div>
             <div class = "col-lg-12" id="contact">
-                <div style="background-color:white; width:100%; height:200px">
+                <div style="background-color:#191919; width:100%; height:200px">
+                    <div style="-ms-flex-align: center;
+                    align-items: center;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-pack: center;
+                    justify-content: center;
+                    font-size: 40px;
+                    color:white;">
+                        TrackYourAssets
+                    </div>
+                    <div style="display: block;
+                    margin-top: 15px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    text-align: center;">
 
                 </div>
+
+                <div style="color:white;text-align:center;font-size:14px;">Copyright © 2017. All Rights Reserved.</div> 
             </div>
-        </div>    
+        </div>
     </body>
 </html>

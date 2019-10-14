@@ -115,6 +115,41 @@ class AssetsController extends Controller
     }
 
     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function assignrole(Request $request)
+    {
+        $this->validate($request,[
+            'userDropdown' => 'required',
+            'roleDropdown' => 'required'
+        ]);
+        $userid = $request->input('userDropdown');
+        $role = $request->input('roleDropdown');
+        echo $role;
+        DB::table('users')
+            ->where('id', $userid)
+            ->update(['role' => $role]);
+            return redirect('/home/assignrole')->with('success','Request Successful');
+    }
+    public function changerole(Request $request)
+    {
+        $this->validate($request,[
+            'userDropdown' => 'required',
+            'roleDropdown' => 'required'
+        ]);
+        $userid = $request->input('userDropdown');
+        $role = $request->input('roleDropdown');
+        echo $role;
+        DB::table('users')
+            ->where('id', $userid)
+            ->update(['role' => $role]);
+            return redirect('/home/changerole')->with('success','Request Successful');
+    }
+
+    /**
      * Display the specified resource.
      *
      * @param  int  $id

@@ -14,7 +14,7 @@
             font-size: 20px;
         }
     </style>
-    <div class="container">
+    <div style="width:inherit;height:inherit;vertical-align:middle;" align="center">
         <br><br>
         <h1><strong>Issue Asset</strong></h1>
         <h4 id="demo"></h4>
