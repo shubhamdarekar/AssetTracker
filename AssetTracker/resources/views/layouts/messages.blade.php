@@ -13,7 +13,7 @@
 @endif
 
 @if(session('error'))
-    <div class="alert aleert-danger">
+    <div class="alert alert-danger">
         {{session('error')}}
     </div>
 @endif
