@@ -36,3 +36,4 @@ route::get('/home/newassetrequests','DashboardController@assetrequests'); //see 
 route::post('/home/issue/store','AssetsController@store'); //issue asset
 route::post('home/create/store','AssetsController@create'); //create asset 
 route::post('/home/purchase/index','AssetsController@index'); //order asset 
+route::post('/home/issue/file','AssetsController@file'); //fileissue
