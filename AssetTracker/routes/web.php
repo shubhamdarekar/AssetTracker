@@ -42,3 +42,4 @@ route::post('/home/assignedRole','AssetsController@assignrole');//assigns role
 route::post('/home/changedRole','AssetsController@changerole');//changess role
 route::post('/home/file/fileissues','AssetsController@fileIssues');
 route::post('/home/issue/file','AssetsController@file'); //fileissue
+route::post('/home/requestnewasset/newasset','AssetsController@newasset'); //request for a new asset

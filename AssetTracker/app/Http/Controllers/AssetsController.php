@@ -7,7 +7,8 @@ use App\issuedBy;
 use App\asset;
 use App\userIssues;
 use App\orders;
-use App\userIssues;
+use App\assetRequest;
+// use App\newassetrequests;
 use App\totalQuantity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -164,10 +165,11 @@ class AssetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */ 
-    public function show($id)
+    public function show( Request $id)
     {
-        $requests = issuedBy::find($id);
-        return view('dashboard.requests')->with('requests',$requests);
+        $newassetrequest = assetRequest::all()->toArray();
+        // $requests = issuedBy::find($id);
+        return view('dashboard.requests')->with('requests',compact('requests'));
     }
 
     public function fileIssues(Request $request){
@@ -250,11 +252,11 @@ class AssetsController extends Controller
             'newquantity' => 'required'
         ]);
         $name = $request->input('newassetname');
-        $description = $request->('newdescription');
-        $quantity = $request->('newquantity');
-        DB::table('newassetrequests')->insert(['userId'=>Auth::user()->id,'assetOrdered'=>$name]);
-        return redirect('home/requestNewAssets')->with('success', 'New Asset Oredered');
-        // $ids = newassetrequests::get();
+        $description = $request->input('newdescription');
+        $quantity = $request->input('newquantity');
+        DB::table('newassetrequests')->insert(['userId'=>Auth::user()->id,'assetOrdered'=>$name, 'reason'=>$description, 'quantity'=>$quantity]);
+        return redirect('/home/requestnewasset')->with('success', 'New Asset Oredered');
+       
 
 
      }

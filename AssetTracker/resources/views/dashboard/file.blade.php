@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}'">
     <div class="container">
         <br><br>
-        <h1>File an Issue about asset</h1>
+        <h1>Report a Problem</h1>
         <form action="/home/issue/file" method="POST" autocomplete="off">
             @csrf
             <div class="form-group row">
