@@ -112,7 +112,7 @@ class AssetsController extends Controller
                 );
                 DB::table('assets')
                 ->where('id', $itemId)
-                ->update(['remainingQuantity' =>($remainingQuantity- $itemQuantity)]);
+                ->update(['remainingQuantity' =>($remainingQuantity - $itemQuantity)]);
                 // $issuedBy->save();
                 return redirect('/home/issue')->with('success','Request Successful');
             }else{
@@ -120,7 +120,7 @@ class AssetsController extends Controller
             } 
         }
         else{
-            return redirect('/home/issue')->with('error','0 Asstes available');
+            return redirect('/home/issue')->with('error','0 Assetes available');
         }
     }
 

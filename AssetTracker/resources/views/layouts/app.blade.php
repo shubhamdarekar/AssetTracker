@@ -32,7 +32,7 @@
             z-index: 1;
             top: 15;
             left: 0;
-            background-color: #aaa;
+            background-color: rgba(116, 201, 237,0.6);
             overflow-x: hidden;
             transition: 0.5s;
             padding-top: 60px;

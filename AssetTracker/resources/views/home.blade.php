@@ -1,24 +1,17 @@
 <?php
     use App\User;
 ?>
-
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header"></div>
-
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
+<div style="background-color: chocolate">
+    <div class="row" style="background-color: chartreuse;">
+        <div class="col-4" style="background-color: black;height: 40%">
+            <a href="#"><div class="card">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
+                    <i class="fa fa-wrench">  Total Assets Received</i>
                 </div>
-            </div>
+            </div></a>
         </div>
     </div>
 </div>
