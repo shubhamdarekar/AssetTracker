@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class assetRequest extends Model
 {
-    protected $table = 'assetRequests';
+    protected $table = 'newassetrequests';
     public $primaryKey = 'id';
 
     public function user(){

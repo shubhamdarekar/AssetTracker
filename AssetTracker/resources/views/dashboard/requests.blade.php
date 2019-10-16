@@ -1,26 +1,34 @@
+<?php
+    use App\asset;
+    $ids=asset::get();
+?>
+
 @extends('layouts.app')
 @section('content')
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <h1>Asset Requests</h1> 
     <div class="container">
-        <br><br>
-        <h1>Asset Requests</h1>
-        @if(count($requests) > 0)
-            @foreach($requests as $request)
-                <div class="jumbotron">
-                    <div class="col-8"> 
-                        <?php
-                            $name = users::get()->where('id','=',$request);
-                            echo($name);
-                        ?>
-                        <h3>{{$request->name}}</h3>
-                        <div class="row">
-                            <small>{{$request->quantity}}</small>
-                            <small>{{$request->department}}</small>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        @endif
-        </form>
+        <div class = row>
+            <div class= "col-md-12">
+                <br />
+                <h3 style:align = "center">New Asset Requests</h3>
+                <br />
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Asset Ordered</th>
+                        <th>Quantity</th>
+                        <th>Description</th>
+                    </tr>
+                    @foreach($requests as $row)
+                    <tr>
+                    <td>{{$row['assetOrdered']}}</td>
+                    <td>{{$row['quantity']}}</td>
+                    <td>{{$row['reason']}}</td>
+                    </tr>
+                    @endforeach
+        </div>
+
+        </div>     
+        
     </div>
 @endsection 

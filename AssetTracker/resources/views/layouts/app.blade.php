@@ -169,7 +169,7 @@
       <a href="/home/newassetrequests">Aprove New Asset Requests</a>
     @endif
     @if(Auth::user()->role==2 || Auth::user()->role==3)
-        <a href="/home/requests">Asset Requests</a>
+        <a href="/home/requests">Show Asset Requests</a>
     @endif
     <a href="/home/file">Report a problem</a>
     @if(Auth::user()->role==3 || Auth::user()->role==4 || Auth::user()->role==5)
