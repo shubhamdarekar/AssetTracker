@@ -249,7 +249,7 @@ class AssetsController extends Controller
         $this->validate($request,[
             'newassetname' => 'required',
             'newdescription' => 'required',
-            'newquantity' => 'required'
+            'newquantity' => 'required',
         ]);
         $name = $request->input('newassetname');
         $description = $request->input('newdescription');
@@ -262,5 +262,5 @@ class AssetsController extends Controller
      }
 
         
-}
+}   
 

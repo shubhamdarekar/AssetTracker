@@ -27,12 +27,12 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: transparent;
                 color: #fff;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 margin: 0;
                 background-repeat: no-repeat;
+                background-size: 1920px 1080px;
             }
 
             .title {
@@ -191,7 +191,7 @@
         </style>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
-    <body>
+    <body background="/images/download.jfif">
         <nav class="navbar navbar-expand-sm fixed-top" style="background-color: rgba(52, 165, 217,1)">  
                 
                     

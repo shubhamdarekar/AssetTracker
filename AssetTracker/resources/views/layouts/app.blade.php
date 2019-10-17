@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="{{ asset('css/app3.css')}}">
 
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -35,7 +36,7 @@
             background-color: rgba(116, 201, 237,0.6);
             overflow-x: hidden;
             transition: 0.5s;
-            padding-top: 60px;
+            position: fixed;
           }
           
           .sidenav a {
@@ -59,12 +60,10 @@
           }
           
           .container {
-            position: absolute;
             /* background: #000; */
             left: 50%;
-          top: 26%;
-          font-size: 25px;
-          
+            top: 26%;
+            font-size: 25px;
             height: 200px;
             margin-top: -100px /* half of you height */
             width: 400px;
@@ -123,7 +122,7 @@
     
       </script>
 
-  <div class="w3-bar" style="height: 50px;background-color: rgb(52,165,217)">
+  <div class="w3-bar" style="height: 50px;background-color: rgb(52,165,217);">
   @auth
     <span class="w3-bar-item" style="font-size:30px;cursor:pointer" onclick="openNav()" id="sidenavButton">&#9776</span>
   @endauth
@@ -151,37 +150,34 @@
 
   @auth
   @if (Auth::user()->role!=6)
-  <div id="mySidenav" class="sidenav" style="width:230px">
-    <div id="gayab" style="transition: 0.1ms;">
-    <a href="/home">Dashboard</a>
-    <a href="/home/issue">Issue Asset</a>
+  <div id="mySidenav" class="sidenav" style="width:230px;">
+    <a href="/home"><i class="menu-icon fa fa-laptop">  Dashboard</i></a>
+    <a href="/home/issue"><i class="fa fa-hand-stop-o" aria-gidden="true">  Issue Asset</i></a>
     @if(Auth::user()->role==0)
-    <a href="/home/assignrole">Assign Role</a>
-    <a href="/home/changerole">Change Role</a>
+    <a href="/home/assignrole"><i class="fa fa-list-ul"> Assign Role</i></a>
+    <a href="/home/changerole"><i class="fa fa-pencil-square-o">  Change Role</i></a>
     @endif
     @if(Auth::user()->role==4 || Auth::user()->role==5)
-      <a href="/home/create">Add asset to System</a>
+      <a href="/home/create"><i class="fa fa-plus" aria-gidden="true">  Add asset to System</i></a>
     @endif
     @if(Auth::user()->role==1 || Auth::user()->role==2)
-      <a href="/home/requestnewasset">File Requests for New Asset</a>
+      <a href="/home/requestnewasset"><i class="fa fa-file-text-o" aria-gidden="true">  File Requests for New Asset</i></a>
     @endif
     @if(Auth::user()->role==3 || Auth::user()->role==4)
-      <a href="/home/newassetrequests">Aprove New Asset Requests</a>
+      <a href="/home/newassetrequests"><i class="fa fa-thumbs-o-up" aria-gidden="true">  Aprove New Asset Requests</i></a>
     @endif
     @if(Auth::user()->role==2 || Auth::user()->role==3)
-        <a href="/home/requests">Show Asset Requests</a>
+        <a href="/home/requests"><i class="fa fa-bell-o" aria-gidden="true">  Asset Requests</i></a>
     @endif
-    <a href="/home/file">Report a problem</a>
+    <a href="/home/file"><i class="fa fa-exclamation" aria-hidden="true">  Report a problem</i></a>
     @if(Auth::user()->role==3 || Auth::user()->role==4 || Auth::user()->role==5)
-        <a href="/home/viewissues">See User Problems</a>
+        <a href="/home/viewissues"><i class="fa fa-exclamation-circle" aria-gidden="true">  See User Problems</i></a>
     @endif
     @if(Auth::user()->role==5 || Auth::user()->role==4)
-        <a href="/home/purchase">Place Order For new assets</a>
+        <a href="/home/purchase"><i class="fa fa-shopping-cart" aria-gidden="true">  Place Order For new assets</i></a>
     @endif
     <hr style="margin-left:7.5%;width:85%">
-    <a href="/home/edit">Edit Profile</a>
-      <a href="/home/history">View History</a>
-  </div>
+    <a href="/home/edit"><i class="fa fa-pencil" aria-gidden="true"> Edit Profile</i></a>
   </div>
 @endif
   @endauth

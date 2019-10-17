@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\issuedBy;
+use DB;
 
 class DashboardController extends Controller
 {
@@ -15,7 +17,8 @@ class DashboardController extends Controller
     }
 
     public function requests(){
-        return view('dashboard.requests');
+        $issued = DB::table('issuedby')->where('itemGranted','=', 0)->get();
+        return view('dashboard.requests')->with('issued',$issued);
     }
 
     public function fine(){
