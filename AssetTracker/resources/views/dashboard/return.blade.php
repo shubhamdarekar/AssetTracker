@@ -1,9 +1,10 @@
 <?php
-    use App\asset;
-    use App\User;
-    ini_set ( "memory_limit" , '128M' ) ;
+    Use App\asset;
+    Use App\User;
 ?>
+
 @extends('layouts.app')
+
 @section('content')
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 <style>
@@ -20,9 +21,9 @@
 </style>
 <div style="width:inherit;height:inherit;vertical-align:middle" align="center">
     <br><br><br><br>
-    <h1 style="text-align: center"><strong>Asset Requests</strong></h1>
+    <h1 style="text-align: center"><strong>Return Assets</strong></h1>
     <br><br>
-        @foreach ($issued as $id)
+        @foreach ($return as $id)
             <?php //echo var_dump($id);?>
             {{-- <h1>hello</h1> --}}
             <?php
@@ -35,7 +36,7 @@
                 // dd ($assetname);
             ?>
             <div class="card" style="width:40%">
-                <form action="/home/requests/grant" method="POST">
+                <form action="/home/requests/returned" method="POST">
                 <div class="card-header" style="background-color: gray">
                     <h3><input type="text" name="name" value="{{$username[0]['name']}}" readonly style="text-align: center;background-color: gray;border:none"></h3>
                 </div>
@@ -51,7 +52,7 @@
                             <div class="form-group">
                                 <div class="col-4">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success col-9" name="submit">Grant</button>
+                                        <button type="submit" class="btn btn-danger col-11" name="submit">Asset Returned</button>
                                     </div>
                                 </div>
                             </div>
@@ -64,4 +65,4 @@
     </div>
     
 </div>
-@endsection 
+@endsection

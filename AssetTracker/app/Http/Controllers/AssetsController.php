@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\issuedBy;
 use App\asset;
 use App\userIssues;
+use App\User;
 use App\orders;
 use App\assetRequest;
 use App\newassetrequests;
@@ -195,12 +196,14 @@ class AssetsController extends Controller
     public function edit(Request $request)
     {
         $this->validate($request,[
+            'name' => 'required',
             'asset' => 'required',
             'quantity' => 'required'
         ]);
         $assetname = $request->input('asset');
         $quantity = $request->input('quantity');
-        $userId = Auth::user()->id;
+        $user = User::where('name','=',$request->input('name'))->get();
+        $userId = $user[0]['id'];
         $assetIdDetails = asset::where('name','=',$assetname)->get();   
         // echo $assetIdDetails;
         $assetId = $assetIdDetails[0]['id'];
@@ -213,8 +216,8 @@ class AssetsController extends Controller
                   ->update(['itemGranted' => 1]);
         // $idDetails = issuedBy::find($id);
         // echo $idDetails;
-        // $idDetails->where('id',$id)->update(array('itemGranted' => 1));
-        $issued = DB::table('issuedby')->where('itemGranted','=', 0)->get();    
+        // $idDetails->where('id',$id)->update('itemGranted' => 1));
+        $issued = DB::table('issuedby')->where('itemGranted','=', 0)->get();   
         return view('dashboard.requests')->with('issued',$issued);
     }
 
@@ -315,5 +318,47 @@ class AssetsController extends Controller
         $newassetrequests = newassetrequests::where('addedToAssets','=',0)->orderBy('id','DESC')->get();                             
         return view('dashboard.newassetrequests')->with('newassetrequests',$newassetrequests);
     }      
+
+    public function returned(Request $request){
+
+        $this->validate($request,[
+            'name' => 'required',
+            'asset' =>'required',
+            'quantity' => 'required'
+        ]);
+        $username = $request->input('name');
+        $user = User::where('name','=',$username)->get();
+        // echo $user;
+        $assetname = $request->input('asset');
+        // echo $assetname;        
+        $quantity = $request->input('quantity');
+        // echo $quantity; 
+        $asset = asset::where('name','=',$assetname)->get();
+        // echo $asset;
+
+        $assetId = $asset[0]['id'];
+        // echo $assetId;
+        // echo "<br>";
+        $remain = $asset[0]['remainingQuantity'];
+        // echo $remain;
+
+        $id = issuedBy::where('itemIssued','=',$assetId)
+                        ->
+        DB::table('assets')->where('name','=',$assetname)
+                           ->update(['remainingQuantity' => ($remain + $quantity)]);
+
+        DB::table('issuedby')
+            ->where('userId','=',$user[0]['id'])
+            ->where('itemIssued','=',$assetname)
+            ->where('quantityIssued','=',$quantity)
+            ->where('itemGranted','=',1)
+            ->where('itemReturned','=',0)
+            ->update(['itemReturned' => 1]);
+
+        $return = DB::table('issuedby')
+                      ->where('itemGranted','=', 1)
+                      ->where('itemReturned','=',0)->get();    
+        return view('dashboard.return')->with('return',$return);
+    }
 }   
 
