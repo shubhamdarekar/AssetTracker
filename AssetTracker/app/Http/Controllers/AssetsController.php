@@ -48,7 +48,6 @@ class AssetsController extends Controller
         $this->validate($request,[
             'createAssetName' => 'required',
             'createAssetQuantity' => 'required',
-            'createAssetDepartment' => 'required'
         ]);
 
         $ids = asset::get();
@@ -63,7 +62,6 @@ class AssetsController extends Controller
         }   
         $asset = new asset();
         $asset->name = $name;
-        $asset->belongsToDept = $request->input('createAssetDepartment');
         $asset->totalQuantity = $request->input('createAssetQuantity');
         $asset->remainingQuantity = $request->input('createAssetQuantity');
         $asset->save();
