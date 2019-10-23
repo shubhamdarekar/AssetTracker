@@ -26,8 +26,6 @@ route::get('/home/requests','DashboardController@requests'); //view the asset re
 route::get('/home/fine','DashboardController@fine'); //fine users
 route::get('/home/file','DashboardController@file'); //file issues
 route::get('/home/viewissues','DashboardController@viewissues'); //view issues
-route::get('/home/history','DashboardController@history'); //view history
-route::get('/home/otherDepartmentDetails','DashboardController@otherDepartmentDetails'); //view other dept details
 route::get('/home/purchase','DashboardController@purchase'); //purchase assets
 route::get('/home/edit','DashboardController@edit'); //edit profile
 route::get('/home/requestnewasset','DashboardController@newasset'); //request for a new asset
@@ -43,3 +41,6 @@ route::post('/home/changedRole','AssetsController@changerole');//changess role
 route::post('/home/file/fileissues','AssetsController@fileIssues');
 route::post('/home/issue/file','AssetsController@file'); //fileissue
 route::post('/home/requestnewasset/newasset','AssetsController@newasset'); //request for a new asset
+route::post('/home/newassetrequests/create','AssetsController@createNew'); 
+route::post('/home/requests/grant','AssetsController@edit');
+route::post('home/viewissues/marksolved','AssetsController@markSolved');

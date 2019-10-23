@@ -17,7 +17,6 @@
     <div style="width:inherit;height:inherit;vertical-align:middle;" align="center">
         <br><br>
         <h1 style="text-align: center"><strong>Issue Asset</strong></h1>
-        <h4 id="demo"></h4>
         <br><br>
         <form action="/home/issue/store" method="POST" autocomplete="off">
             @csrf

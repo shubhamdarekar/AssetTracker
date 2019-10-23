@@ -6,7 +6,15 @@
 @section('content')
             <div clas="form-group row">
     <link rel="stylesheet" href="{{asset('css/app.css')}}'">
-    <div class="container">
+    <style>
+        *{
+            text-decoration: none;
+        }
+        label{
+            font-size: 20px;
+        }
+    </style>
+    <div style="width:inherit;height:inherit;vertical-align:middle;" align="center">
         <br><br>
         <h1>Report a Problem</h1>
         <form action="/home/issue/file" method="POST" autocomplete="off">
@@ -15,7 +23,7 @@
                 <label class="col-3">Name of Asset</label>
                 <select name="filename" class="col-2">
                     @foreach($ids as $id)
-                        <option value="{{$id->id}}">{{$id->name}}</option>
+                        <option value="{{$id->name}}">{{$id->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -32,4 +40,7 @@
             </div>
         </form>
     </div>
+    {{-- <div class="container">
+        
+    </div> --}}
 @endsection

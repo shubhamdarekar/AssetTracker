@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\issuedBy;
+use App\userIssues;
+use App\newassetrequests;
 use DB;
 
 class DashboardController extends Controller
@@ -38,28 +40,24 @@ class DashboardController extends Controller
     {
         return view('dashboard.requestNewAssets');
     }
-
-    public function otherDepartmentDetails()
-    {
-        return view('dashboard.otherDepartmentDetails');
-    }
-
     public function purchase()
     {
         return view('dashboard.purchase');
     }
 
-    public function edit()
+    public function edit()  
     {
         return view('dashboard.edit');
     }
 
     public function assetrequests(){
-        return view('dashboard.requestNewAsset');
+        $newassetrequests = newassetrequests::where('addedToAssets','=',0)->orderBy('id','DESC')->get();
+        return view('dashboard.newassetrequests')->with('newassetrequests',$newassetrequests);
     }
 
     public function viewissues(){
-        return view('dashboard.viewIssues');
+        $viewIssues = userIssues::where('solved','=',0)->orderBy('id','DESC')->get();
+        return view('dashboard.viewIssues')->with('viewIssues',$viewIssues);
     }
 
     public function assignrole(){

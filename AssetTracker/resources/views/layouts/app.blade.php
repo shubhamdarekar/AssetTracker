@@ -169,7 +169,9 @@
     @if(Auth::user()->role==2 || Auth::user()->role==3)
         <a href="/home/requests"><i class="fa fa-bell-o" aria-gidden="true">  Asset Requests</i></a>
     @endif
+    @if(Auth::user()->role == 1 || Auth::user()->role == 2)
     <a href="/home/file"><i class="fa fa-exclamation" aria-hidden="true">  Report a problem</i></a>
+    @endif
     @if(Auth::user()->role==3 || Auth::user()->role==4 || Auth::user()->role==5)
         <a href="/home/viewissues"><i class="fa fa-exclamation-circle" aria-gidden="true">  See User Problems</i></a>
     @endif
@@ -182,7 +184,7 @@
 @endif
   @endauth
 
-  <div id="maincontent" style="width:100%;transition : 0.5s;margin-left:230px;">
+  <div id="maincontent" style="width:100%;transition : 0.5s;margin-left:230px;background-color: white;">
   @include('layouts.messages')
   @yield('content')
   </div>
