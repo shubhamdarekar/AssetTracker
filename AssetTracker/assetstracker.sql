@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2019 at 06:50 PM
+-- Generation Time: Oct 23, 2019 at 10:59 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -47,7 +47,7 @@ INSERT INTO `assets` (`id`, `name`, `totalQuantity`, `remainingQuantity`, `creat
 (3, 'Whiteboard', 7, 7, '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
 (4, 'Speaker', 4, 4, '2019-10-12 11:59:20', '2019-10-12 11:59:20'),
 (10, 'Switch Boards', 5, 5, '2019-10-12 12:54:25', '2019-10-12 12:54:25'),
-(14, 'Files', 30, 30, '2019-10-12 13:13:22', '2019-10-12 13:13:22'),
+(14, 'Files', 30, 28, '2019-10-12 13:13:22', '2019-10-12 13:13:22'),
 (19, 'Raspberry Pi', 10, 10, '2019-10-12 13:24:22', '2019-10-12 13:24:22'),
 (22, 'Arduino', 15, 15, '2019-10-12 13:31:06', '2019-10-12 13:31:06'),
 (23, 'IR Sensor', 20, 20, '2019-10-12 13:34:13', '2019-10-12 13:34:13'),
@@ -62,23 +62,7 @@ INSERT INTO `assets` (`id`, `name`, `totalQuantity`, `remainingQuantity`, `creat
 (33, 'Chalk', 25, 25, '2019-10-12 18:48:46', '2019-10-12 18:48:46'),
 (34, 'Duster', 10, 10, '2019-10-12 19:03:56', '2019-10-12 19:03:56'),
 (45, 'Usb Cords', 10, 10, '2019-10-20 06:51:45', '2019-10-20 06:51:45'),
-(46, 'Bluetooth', 23, 23, '2019-10-20 06:52:08', '2019-10-20 06:52:08'),
-(47, 'Usb Cords', 10, 10, '2019-10-23 08:57:28', '2019-10-23 08:57:28'),
-(48, 'Usb Cords', 10, 10, '2019-10-23 08:58:33', '2019-10-23 08:58:33'),
-(49, 'Usb Cords', 10, 10, '2019-10-23 08:58:36', '2019-10-23 08:58:36'),
-(50, 'Usb Cords', 10, 10, '2019-10-23 08:59:42', '2019-10-23 08:59:42'),
-(51, 'Usb Cords', 10, 10, '2019-10-23 09:11:59', '2019-10-23 09:11:59'),
-(52, 'Usb Cords', 10, 10, '2019-10-23 09:12:36', '2019-10-23 09:12:36'),
-(53, 'Usb Cords', 10, 10, '2019-10-23 09:12:55', '2019-10-23 09:12:55'),
-(54, 'Usb Cords', 10, 10, '2019-10-23 09:46:08', '2019-10-23 09:46:08'),
-(55, 'Usb Cords', 10, 10, '2019-10-23 09:46:09', '2019-10-23 09:46:09'),
-(56, 'Usb Cords', 10, 10, '2019-10-23 09:46:11', '2019-10-23 09:46:11'),
-(57, 'Usb Cords', 10, 10, '2019-10-23 09:46:11', '2019-10-23 09:46:11'),
-(58, 'Usb Cords', 10, 10, '2019-10-23 09:47:03', '2019-10-23 09:47:03'),
-(59, 'Usb Cords', 10, 10, '2019-10-23 09:47:05', '2019-10-23 09:47:05'),
-(60, 'Usb Cords', 10, 10, '2019-10-23 09:49:08', '2019-10-23 09:49:08'),
-(61, 'Usb Cords', 10, 10, '2019-10-23 09:49:23', '2019-10-23 09:49:23'),
-(62, 'Bluetooth', 23, 23, '2019-10-23 10:05:34', '2019-10-23 10:05:34');
+(46, 'Bluetooth', 23, 23, '2019-10-20 06:52:08', '2019-10-20 06:52:08');
 
 -- --------------------------------------------------------
 
@@ -107,6 +91,7 @@ CREATE TABLE `issuedby` (
   `itemIssued` int(11) NOT NULL,
   `quantityIssued` int(11) NOT NULL,
   `itemGranted` int(11) NOT NULL DEFAULT '0',
+  `itemReturned` int(11) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -115,10 +100,11 @@ CREATE TABLE `issuedby` (
 -- Dumping data for table `issuedby`
 --
 
-INSERT INTO `issuedby` (`id`, `userId`, `itemIssued`, `quantityIssued`, `itemGranted`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 1, 1, '2019-10-11 12:01:51', '2019-10-11 12:01:51'),
-(3, 5, 2, 1, 1, '2019-10-11 12:12:57', '2019-10-11 12:12:57'),
-(12, 5, 1, 1, 1, '2019-10-12 18:45:44', '2019-10-12 18:45:44');
+INSERT INTO `issuedby` (`id`, `userId`, `itemIssued`, `quantityIssued`, `itemGranted`, `itemReturned`, `created_at`, `updated_at`) VALUES
+(17, 4, 19, 2, 1, 1, NULL, NULL),
+(18, 4, 14, 10, 1, 1, NULL, NULL),
+(19, 5, 1, 1, 1, 0, NULL, NULL),
+(20, 3, 14, 12, 1, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -338,7 +324,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `issuedby`
 --
 ALTER TABLE `issuedby`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `migrations`
