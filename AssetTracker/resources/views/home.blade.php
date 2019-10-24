@@ -16,7 +16,7 @@
 </style>
     <div class="row" style="margin-left:4%;margin-top:3%;width:75%">
         <div class="col-lg-4 col-md-6">
-            <a href="#" class="anchor">
+            <a href="/home/userrequests" class="anchor">
                 <div class="card" style="height: 100%">
                     <div class="card-body">
                         <div class="stat-content">
@@ -29,7 +29,7 @@
             </a>
         </div>
         <div class="col-lg-4 col-md-6">
-            <a href="#" class="anchor">
+            <a href="/home/usergranted" class="anchor">
                 <div class="card">
                     <div class="card-body">
                         <div class="stat-content">

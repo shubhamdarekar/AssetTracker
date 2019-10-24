@@ -36,6 +36,13 @@ class DashboardController extends Controller
         return view('dashboard.history');
     }
 
+    public function return(){
+        $return = DB::table('issuedby')
+                  ->where('itemGranted','=',1)
+                  ->where('itemReturned','=',0)->get();
+        return view('dashboard.return')->with('return',$return);
+    }
+
     public function newasset()
     {
         return view('dashboard.requestNewAssets');
@@ -66,5 +73,15 @@ class DashboardController extends Controller
 
     public function changerole(){
         return view('dashboard.changeRole');
+    }
+
+    public function userRequests(){
+        $requests = issuedBy::where('itemGranted','=',0)->orderBy('id','DESC')->get();
+        return view('dashboard.userRequests')->with('requests',$requests);
+    }
+
+    public function userGranted(){
+        $grants = issuedBy::where('itemGranted','=',1)->orderBy('id','DESC')->get();
+        return view('dashboard.userGranted')->with('grants',$grants);   
     }
 }

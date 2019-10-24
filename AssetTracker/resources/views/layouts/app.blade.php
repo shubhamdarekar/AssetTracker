@@ -166,8 +166,9 @@
     @if(Auth::user()->role==3 || Auth::user()->role==4)
       <a href="/home/newassetrequests"><i class="fa fa-thumbs-o-up" aria-gidden="true">  Aprove New Asset Requests</i></a>
     @endif
-    @if(Auth::user()->role==2 || Auth::user()->role==3)
+    @if(Auth::user()->role==2)
         <a href="/home/requests"><i class="fa fa-bell-o" aria-gidden="true">  Asset Requests</i></a>
+        <a href="/home/return"><i class="fa fa-arrow-circle-left">  Return Assets</i></a>
     @endif
     @if(Auth::user()->role == 1 || Auth::user()->role == 2)
     <a href="/home/file"><i class="fa fa-exclamation" aria-hidden="true">  Report a problem</i></a>

@@ -32,6 +32,9 @@ route::get('/home/requestnewasset','DashboardController@newasset'); //request fo
 route::get('/home/newassetrequests','DashboardController@assetrequests'); //see the new asset requests
 route::get('/home/assignrole','DashboardController@assignrole');//Assignrole to user
 route::get('/home/changerole','DashboardController@changerole');//change role ofuser user
+route::get('/home/return','DashboardController@return');
+route::get('/home/userrequests','DashboardController@userRequests');
+route::get('/home/usergranted','DashboardController@userGranted');
 
 route::post('/home/issue/store','AssetsController@store'); //issue asset
 route::post('home/create/store','AssetsController@create'); //create asset 
@@ -44,3 +47,5 @@ route::post('/home/requestnewasset/newasset','AssetsController@newasset'); //req
 route::post('/home/newassetrequests/create','AssetsController@createNew'); 
 route::post('/home/requests/grant','AssetsController@edit');
 route::post('home/viewissues/marksolved','AssetsController@markSolved');
+route::post('/home/requests/returned','AssetsController@returned');
+
