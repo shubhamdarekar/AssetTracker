@@ -340,8 +340,7 @@ class AssetsController extends Controller
         $remain = $asset[0]['remainingQuantity'];
         // echo $remain;
 
-        $id = issuedBy::where('itemIssued','=',$assetId)
-                        ->
+        $id = issuedBy::where('itemIssued','=',$assetId);
         DB::table('assets')->where('name','=',$assetname)
                            ->update(['remainingQuantity' => ($remain + $quantity)]);
 
