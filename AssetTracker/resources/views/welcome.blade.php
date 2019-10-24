@@ -33,6 +33,7 @@
                 margin: 0;
                 background-repeat: no-repeat;
                 background-size: 1920px 1080px;
+                background-attachment: fixed;
             }
 
             .title {
@@ -193,11 +194,12 @@
     </head>
     <body background="/images/download.jfif">
         <nav class="navbar navbar-expand-sm fixed-top" style="background-color: rgba(52, 165, 217,1)">  
-                
+            <div class="container-fluid">
+            <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="expand" data-target="#navbar2"> ☰ </button>
                     
 
                             <a id ="myid" class="nav-item myitem" style="padding:0%; color:black; margin-right:5%" href="/">TrackYourAssets</a>
-                <div class="collapse navbar-collapse justify-content-between" id="navbar">
+                <div class="collapse navbar-expand-sm navbar-collapse justify-content-between" id="navbar2">
                         <div class="navbar-nav">
                 @if(Route::has('login'))
                     @auth
@@ -219,8 +221,7 @@
                 </div> 
                 @endauth
                 </div>
-                    
-            </ul>
+            </div>
         </nav>
               
         <div class="row" style="margin-top:8%;width:100%">
@@ -312,7 +313,7 @@
 
                 </div>
 
-                <div style="color:white;text-align:center;font-size:14px;">Copyright © 2017. All Rights Reserved.</div> 
+                <div style="color:white;text-align:center;font-size:14px;">Copyright © 2019. All Rights Reserved.</div> 
             </div>
         </div>
     </body>
