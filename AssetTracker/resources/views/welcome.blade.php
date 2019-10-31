@@ -8,6 +8,9 @@
         <title>{{config('app.name','TrackYourAssets')}}</title>
         <!-- Jquery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>  --}}
+        <script src="{{asset('js/jquery.localscroll.js')}}" type="text/javascript"></script> 
+        <script src="{{asset('js/jquery.scrollTo.js')}}" type="text/javascript"></script> 
         <script>
         $(document).ready(function() {
         $(window).scroll(function() {
@@ -23,6 +26,9 @@
         </script>
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <link href="{{asset('fontawesome-free-5.11.2-web/css/fontawesome.css')}}" rel="stylesheet">
+        <link href="{{asset('fontawesome-free-5.11.2-web/css/brands.css')}}" rel="stylesheet">
+        <link href="{{asset('fontawesome-free-5.11.2-web/css/solid.css')}}" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -34,6 +40,7 @@
                 background-repeat: no-repeat;
                 background-size: 1920px 1080px;
                 background-attachment: fixed;
+                overflow-x: hidden;
             }
 
             .title {
@@ -44,7 +51,7 @@
                 position: relative;
                 width:100%;
                 height: 100%;
-                transition: all 0.8s linear;
+                transition: all 0.3s linear;
                 transform-style: preserve-3d;
                 border-radius: 45px;
             }
@@ -189,16 +196,184 @@
                 padding-bottom: 10px;
                 
             }
+            .sk-chase {
+                position: absolute;
+            top: 48%;
+            left: 48%;
+        width: 40px;
+        height: 40px;
+        animation: sk-chase 2.5s infinite linear both;
+        }
+
+        .sk-chase-dot {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0; 
+        animation: sk-chase-dot 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:before {
+        content: '';
+        display: block;
+        width: 25%;
+        height: 25%;
+        background-color: #fff;
+        border-radius: 100%;
+        animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:nth-child(1) { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2) { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3) { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4) { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5) { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6) { animation-delay: -0.6s; }
+        .sk-chase-dot:nth-child(1):before { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2):before { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3):before { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4):before { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5):before { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6):before { animation-delay: -0.6s; }
+
+        @keyframes sk-chase {
+        100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot {
+        80%, 100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot-before {
+        50% {
+            transform: scale(0.4); 
+        } 100%, 0% {
+            transform: scale(1.0); 
+        } 
+        }
+        .spinner-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(52, 165, 217,1);
+        z-index: 999999;
+        }
+        .our-team{
+    text-align: center;
+    transition: all 0.5s ease 0s;
+        }
+        .our-team:hover{
+            box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+        .our-team .pic{
+            overflow: hidden;
+            position: relative;
+        }
+        .our-team .pic:before,
+        .our-team .pic:after{
+            content: "";
+            width: 200%;
+            height: 80%;
+            background: rgba(38,37,37,0.8);
+            position: absolute;
+            top: -100%;
+            left: -4%;
+            transform: rotate(45deg);
+            transition: all 0.5s ease 0s;
+        }
+        .our-team .pic:after{
+            background: rgba(52, 165, 217,0.8);
+            top: auto;
+            left: auto;
+            bottom: -100%;
+            right: -4%;
+        }
+        .our-team:hover .pic:before{ top: 0; }
+        .our-team:hover .pic:after{ bottom: 0; }
+        .our-team .pic img{
+            width: 100%;
+            height: auto;
+        }
+        .our-team .social{
+            width: 100%;
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            position: absolute;
+            bottom: 45%;
+            left: 0;
+            opacity: 0;
+            z-index: 2;
+            transition: all 0.5s ease 0.3s;
+        }
+        .our-team:hover .social{ opacity: 1; }
+        .our-team .social li{ display: inline-block; }
+        .our-team .social li a{
+            display: block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 20px;
+            color: #fff;
+            margin-right: 10px;
+            position: relative;
+            transition: all 0.3s ease 0s;
+        }
+        .our-team .social li a:after{
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: #db162f;
+            border-radius: 0 20px 20px 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            transition: all 0.3s ease 0s;
+        }
+        .our-team .social li a:hover:after{ transform: rotate(180deg); }
+        .our-team .team-content{ padding: 20px; }
+        .our-team .title{
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(52, 165, 217,1);
+            text-transform: uppercase;
+            margin-bottom: 7px;
+        }
+        .our-team .post{
+            display: block;
+            font-size: 17px;
+            font-weight: 600;
+            color: #707070;
+            text-transform: capitalize;
+        }
+        @media only screen and (max-width: 990px){
+            .our-team{ margin-bottom: 30px; }
+        }
         </style>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
     </head>
     <body background="/images/download.jfif">
+        <div class="spinner-wrapper">
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+          </div>
+        </div>
         <nav class="navbar navbar-expand-sm fixed-top" style="background-color: rgba(52, 165, 217,1)">  
             <div class="container-fluid">
             <button class="navbar-toggler hidden-md-up pull-right" type="button" data-toggle="expand" data-target="#navbar2"> ☰ </button>
                     
 
-                            <a id ="myid" class="nav-item myitem" style="padding:0%; color:black; margin-right:5%" href="/">TrackYourAssets</a>
+                            <a id ="myid" class="nav-item myitem" style="padding:0%; color:black; margin-right:5%" href="#top">TrackYourAssets</a>
                 <div class="collapse navbar-expand-sm navbar-collapse justify-content-between" id="navbar2">
                         <div class="navbar-nav">
                 @if(Route::has('login'))
@@ -213,7 +388,7 @@
                 @endif
                     <a class="nav-item nav-link" href="#about">About</a>
 
-                    <a class="nav-item nav-link" href="#contact">Contact</a>
+                    <a class="nav-item nav-link" href="#contact">Team</a>
                     </div>
                 @auth
                 <div class="navbar-nav">
@@ -224,7 +399,7 @@
             </div>
         </nav>
               
-        <div class="row" style="margin-top:8%;width:100%">
+        <div class="row" id ='top' style="margin-top:8%;width:100%">
             <h1 class = "mainheading" >TrackYourAssets</h1>
             <div class="vl"></div>
             <div class = "imageparent">
@@ -232,7 +407,7 @@
             </div>  
         </div>
         <div id="about">
-            <div class="row" style="margin-top: 3%">
+            <div class="row" style="margin-top: 3%; margin-right:0%">
                 <div class="container col-lg-5">
                     <div class="card card-block d-flex">
                         <div class="front face">
@@ -294,7 +469,7 @@
                     </div>
             </div>
             <div class = "col-lg-12" id="contact">
-                <div style="background-color:#191919; width:100%; height:200px">
+                <div style="background-color:#191919; width:100%; height:750px">
                     <div style="-ms-flex-align: center;
                     align-items: center;
                     display: -ms-flexbox;
@@ -303,18 +478,82 @@
                     justify-content: center;
                     font-size: 40px;
                     color:white;">
-                        TrackYourAssets
+                        Our Team
                     </div>
-                    <div style="display: block;
-                    margin-top: 15px;
-                    padding-left: 20px;
-                    padding-right: 20px;
-                    text-align: center;">
+                    <div class='container' style="margin-top:0%;height:500px">
+                            <div class="row">
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="our-team">
+                                        <div class="pic">
+                                            <img src="images/img-1.jpg">
+                                            <ul class="social">
+                                                <li><a href="#" class="fab fa-facebook"></a></li>
+                                                <li><a href="https://www.instagram.com/daarekar/" class="fab fa-instagram"></a></li>
+                                                <li><a href="#" class="fab fa-linkedin"></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="team-content">
+                                            <h3 class="title">Shubham</h3>
+                                            <span class="post">Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                    <div class="our-team">
+                                        <div class="pic">
+                                            <img src="images/img-2.jpg">
+                                            <ul class="social">
+                                                <li><a href="#" class="fab fa-facebook"></a></li>
+                                                <li><a href="https://www.instagram.com/narayanipatil/" class="fab fa-instagram"></a></li>
+                                                <li><a href="#" class="fab fa-linkedin"></a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="team-content">
+                                            <h3 class="title">Narayani</h3>
+                                            <span class="post">Member</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 col-sm-6">
+                                        <div class="our-team">
+                                            <div class="pic">
+                                                <img src="images/img-3.jpg">
+                                                <ul class="social">
+                                                    <li><a href="#" class="fab fa-facebook"></a></li>
+                                                    <li><a href="https://www.instagram.com/p_sparsh999/" class="fab fa-instagram"></a></li>
+                                                    <li><a href="#" class="fab fa-linkedin"></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="team-content">
+                                                <h3 class="title">Sparsh</h3>
+                                                <span class="post">Member</span>
+                                            </div>
+                                        </div>
+                                    </div> 
+                            </div>
+                        </div>
 
-                </div>
-
-                <div style="color:white;text-align:center;font-size:14px;">Copyright © 2019. All Rights Reserved.</div> 
-            </div>
+                        <div style="color:white;text-align:center;font-size:14px;">Copyright © 2019. All Rights Reserved.</div> 
+                    </div>
         </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+               $.localScroll({duration:800});
+            });
+            </script>
+            <script>
+                $(document).ready(function() {
+                //Preloader
+                $(window).on("load", function() {
+                preloaderFadeOutTime = 500;
+                function hidePreloader() {
+                var preloader = $('.spinner-wrapper');
+                preloader.fadeOut(preloaderFadeOutTime);
+                }
+                hidePreloader();
+                });
+                });
+                </script>
     </body>
+    
 </html>

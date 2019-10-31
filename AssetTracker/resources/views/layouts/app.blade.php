@@ -16,11 +16,16 @@
 </head>
 
   <body>
-    @auth
-  @if (Auth::user()->role==6)
-    </h1>Contact Admin To assign yourself a role</h1>  
-  @endif
-  @endauth
+      <div class="spinner-wrapper">
+          <div class="sk-chase">
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+              <div class="sk-chase-dot"></div>
+            </div>
+          </div>
       <style>
           body {
             font-family: "Lato", sans-serif;
@@ -99,6 +104,71 @@
               width:100%;
             }
           }
+          .sk-chase {
+                position: absolute;
+            top: 48%;
+            left: 48%;
+        width: 80px;
+        height: 80px;
+        animation: sk-chase 2.5s infinite linear both;
+        }
+
+        .sk-chase-dot {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0; 
+        animation: sk-chase-dot 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:before {
+        content: '';
+        display: block;
+        width: 25%;
+        height: 25%;
+        background-color: #fff;
+        border-radius: 100%;
+        animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
+        }
+
+        .sk-chase-dot:nth-child(1) { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2) { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3) { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4) { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5) { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6) { animation-delay: -0.6s; }
+        .sk-chase-dot:nth-child(1):before { animation-delay: -1.1s; }
+        .sk-chase-dot:nth-child(2):before { animation-delay: -1.0s; }
+        .sk-chase-dot:nth-child(3):before { animation-delay: -0.9s; }
+        .sk-chase-dot:nth-child(4):before { animation-delay: -0.8s; }
+        .sk-chase-dot:nth-child(5):before { animation-delay: -0.7s; }
+        .sk-chase-dot:nth-child(6):before { animation-delay: -0.6s; }
+
+        @keyframes sk-chase {
+        100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot {
+        80%, 100% { transform: rotate(360deg); } 
+        }
+
+        @keyframes sk-chase-dot-before {
+        50% {
+            transform: scale(0.4); 
+        } 100%, 0% {
+            transform: scale(1.0); 
+        } 
+        }
+        .spinner-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(52, 165, 217,1);
+        z-index: 999999;
+        }
           </style>
 
   <script>
@@ -192,6 +262,18 @@
 
 
 
-    
+  <script>
+      $(document).ready(function() {
+      //Preloader
+      $(window).on("load", function() {
+      preloaderFadeOutTime = 500;
+      function hidePreloader() {
+      var preloader = $('.spinner-wrapper');
+      preloader.fadeOut(preloaderFadeOutTime);
+      }
+      hidePreloader();
+      });
+      });
+      </script>
   </body>
 </html>
