@@ -14,6 +14,7 @@
         color: black;
     }
 </style>
+@if (Auth::user()->role!=6)
     <div class="row" style="margin-left:4%;margin-top:3%;width:75%">
         <div class="col-lg-4 col-md-6">
             <a href="/home/userrequests" class="anchor">
@@ -45,4 +46,7 @@
     <div class="container" style="background-color:white;width:80%;margin-left: 2%">
         @yield('dashboard')
     </div>
+    @else
+    <h1>CONTACT ADMIN TO ASSIGN YOURSELF A ROLE.<br> You Wont be able to do anything before that.<br>Contact Email : adminofmysystem@gmail.com</h1>
+    @endif
 @endsection
