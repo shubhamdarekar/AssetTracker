@@ -386,7 +386,10 @@ class AssetsController extends Controller
         $remain = $asset[0]['remainingQuantity'];
         // echo $remain;
 
+<<<<<<< Updated upstream
         $id = issuedBy::where('itemIssued','=',$assetId);
+=======
+>>>>>>> Stashed changes
         DB::table('assets')->where('name','=',$assetname)
                            ->update(['remainingQuantity' => ($remain + $quantity)]);
 
