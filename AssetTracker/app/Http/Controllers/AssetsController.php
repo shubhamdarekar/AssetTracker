@@ -62,18 +62,17 @@ class AssetsController extends Controller
         }   
         $asset = new asset();
         $asset->name = $name;
-        $asset->totalQuantity = $request->input('createAssetQuantity');
-        $asset->remainingQuantity = $request->input('createAssetQuantity');
+        $asset->totalQuantity =0;
+        $asset->remainingQuantity = 0;
         $asset->save();
+        $order = new orders();
+        $order->orderedBy = Auth::user()->id;
+        $asset2 = asset::where('name','=',$request->input('createAssetName'))->get();
+        $order->assetOrdered = $asset2[0]['id'];
+        $order->quantityOrdered = $request->input('createAssetQuantity');
+        $order->amountToBePaid = 0;
+        $order->save();
         return redirect('home/create')->with('success','Asset Created');
-        // echo($name);
-        // echo($quantity);
-        // $totalId = asset::get()->where('name','=',$name);
-        // echo($totalId);
-        // $totalQuantityRow = asset::get()->where('name','=',$name);
-        // echo($totalQuantityRow);
-        // $Id = ($totalQuantityRow[0]['id']);
-        // echo($Id);
     }
 
     /**
@@ -286,10 +285,7 @@ class AssetsController extends Controller
             'issueFaced' => 'required'
          ]);
         // $request->input('asset');
-        $issues = DB::table('userissues')->where('userId','=',Auth::user()->id)
-                  ->where('asset','=',$request->input('asset'))
-                  ->where('issueFaced','=',$request->input('issueFaced'))
-                  ->where('solved','=',0)
+        $issues = DB::table('userissues')->where('id','=',$request->input('id'))
                   ->update(['solved' => 1]);
 
         $viewIssues = userIssues::where('solved','=',0)->orderBy('id','DESC')->get();
@@ -315,7 +311,57 @@ class AssetsController extends Controller
                                      ->update(['addedToAssets' => 1]);
         $newassetrequests = newassetrequests::where('addedToAssets','=',0)->orderBy('id','DESC')->get();                             
         return view('dashboard.newassetrequests')->with('newassetrequests',$newassetrequests);
-    }      
+    }  
+    public function approve(Request $request){
+        $assets = asset::get();
+        $this->validate($request,[
+            'asset' => 'required',
+            'quantity' => 'required',
+            'reason' => 'required'
+        ]);
+        $asset = new asset();
+        $asset->name = $request->input('asset');
+        $asset->totalQuantity = 0;    
+        $asset->remainingQuantity = 0;
+        $asset->save();
+        $order = new orders();
+        $order->orderedBy = Auth::user()->id;
+        $asset2 = asset::where('name','=',$request->input('asset'))->get();
+        $order->assetOrdered = $asset2[0]['id'];
+        $order->quantityOrdered = $request->input('quantity');
+        $order->amountToBePaid = 0;
+        $order->save();
+        $new = DB::table('newassetrequests')->where('assetOrdered','=',$request->input('asset'))
+                                     ->where('reason','=',$request->input('reason'))
+                                     ->where('quantity','=',$request->input('quantity'))
+                                     ->where('addedToAssets','=',0)
+                                     ->update(['addedToAssets' => 1]);
+        $newassetrequests = newassetrequests::where('addedToAssets','=',0)->orderBy('id','DESC')->get();                             
+        return view('dashboard.newassetrequests')->with('newassetrequests',$newassetrequests);
+    } 
+
+    public function ordersRecieved(Request $request){
+        $this->validate($request,[
+            'asset' => 'required',
+            'quantity' => 'required',
+            'id' => 'required'
+        ]);
+        
+        $asset = asset::where('name','=',$request->input('asset'))->get();
+
+        $assetId = $asset[0]['id'];
+        $remain = $asset[0]['remainingQuantity'];
+        $total = $asset[0]['totalQuantity'];
+        
+
+        $new = DB::table('assets')->where('name','=',$request->input('asset'))
+                                     ->update(['totalQuantity' => $request->input('quantity')+$total,'remainingQuantity' => $request->input('quantity')+$remain]);
+        $new = DB::table('orders')->where('id','=',$request->input('id'))
+                                     ->update(['deliveredInGoodState' => 1]);
+        $orders = orders::where('deliveredInGoodState','=',0)->orderBy('id','DESC')->get();
+        return view('dashboard.ordersRecieved')->with('orders',$orders);
+    } 
+    
 
     public function returned(Request $request){
 
@@ -348,11 +394,7 @@ class AssetsController extends Controller
                            ->update(['remainingQuantity' => ($remain + $quantity)]);
 
         DB::table('issuedby')
-            ->where('userId','=',$user[0]['id'])
-            ->where('itemIssued','=',$assetname)
-            ->where('quantityIssued','=',$quantity)
-            ->where('itemGranted','=',1)
-            ->where('itemReturned','=',0)
+            ->where('id','=',$request->input('id'))
             ->update(['itemReturned' => 1]);
 
         $return = DB::table('issuedby')

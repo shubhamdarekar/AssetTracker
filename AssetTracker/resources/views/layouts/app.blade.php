@@ -228,16 +228,16 @@
     <a href="/home/changerole"><i class="fa fa-pencil-square-o">  Change Role</i></a>
     @endif
     @if(Auth::user()->role==4 || Auth::user()->role==5)
-      <a href="/home/create"><i class="fa fa-plus" aria-gidden="true">  Add asset to System</i></a>
+      <a href="/home/create"><i class="fa fa-plus" aria-gidden="true">  Add new asset to System</i></a>
     @endif
     @if(Auth::user()->role==1 || Auth::user()->role==2)
-      <a href="/home/requestnewasset"><i class="fa fa-file-text-o" aria-gidden="true">  File Requests for New Asset</i></a>
+      <a href="/home/requestnewasset"><i class="fa fa-file-text-o" aria-gidden="true">  File Requests for Unavailable Asset</i></a>
     @endif
     @if(Auth::user()->role==3 || Auth::user()->role==4)
-      <a href="/home/newassetrequests"><i class="fa fa-thumbs-o-up" aria-gidden="true">  Aprove New Asset Requests</i></a>
+      <a href="/home/newassetrequests"><i class="fa fa-thumbs-o-up" aria-gidden="true">  Aprove Unavailable Asset Requests</i></a>
     @endif
     @if(Auth::user()->role==2)
-        <a href="/home/requests"><i class="fa fa-bell-o" aria-gidden="true">  Asset Requests</i></a>
+        <a href="/home/requests"><i class="fa fa-bell-o" aria-gidden="true"> Grant Asset</i></a>
         <a href="/home/return"><i class="fa fa-arrow-circle-left">  Return Assets</i></a>
     @endif
     @if(Auth::user()->role == 1 || Auth::user()->role == 2)
@@ -247,7 +247,10 @@
         <a href="/home/viewissues"><i class="fa fa-exclamation-circle" aria-gidden="true">  See User Problems</i></a>
     @endif
     @if(Auth::user()->role==5 || Auth::user()->role==4)
-        <a href="/home/purchase"><i class="fa fa-shopping-cart" aria-gidden="true">  Place Order For new assets</i></a>
+        <a href="/home/purchase"><i class="fa fa-shopping-cart" aria-gidden="true">  Place Order For current assets</i></a>
+    @endif
+    @if(Auth::user()->role==5)
+        <a href="/home/ordersRecieved"><i class="fa fa-shopping-cart" aria-gidden="true">Orders Status </i></a>
     @endif
     <hr style="margin-left:7.5%;width:85%">
     <a href="/home/edit"><i class="fa fa-pencil" aria-gidden="true"> Edit Profile</i></a>

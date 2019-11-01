@@ -44,6 +44,9 @@
                     <div class="card-body">
                             {{ csrf_field() }}
                             <div class="form-group">
+                                    <input class="form-control" type="text" name="id" value="{{$id->id}}" readonly style="text-align: center">
+                                </div>
+                            <div class="form-group">
                                 <input class="form-control" type="text" name="asset" value="{{$assetname[0]['name']}}" readonly style="text-align: center">
                             </div>
                             <div class="form-group">
