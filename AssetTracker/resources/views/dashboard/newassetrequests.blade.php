@@ -17,7 +17,7 @@
                         <h3>{{$user[0]['name']}}</h3>
                     </div>
                     <div class="card-body">
-                            <form action="/home/newassetrequests/create" method="POST">
+                            <form action="/home/newassetrequests/approve" method="POST">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <input class="form-control" type="text" name="asset" value="{{$new->assetOrdered}}" readonly style="text-align: center">

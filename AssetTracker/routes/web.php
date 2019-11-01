@@ -39,6 +39,7 @@ route::get('/home/changerole','DashboardController@changerole')->middleware('aut
 route::get('/home/return','DashboardController@return')->middleware('auth');
 route::get('/home/userrequests','DashboardController@userRequests')->middleware('auth');
 route::get('/home/usergranted','DashboardController@userGranted')->middleware('auth');
+route::get('/home/ordersRecieved','DashboardController@ordersRecieved')->middleware('auth');
 
 route::post('/home/issue/store','AssetsController@store')->middleware('auth'); //issue asset
 route::post('home/create/store','AssetsController@create')->middleware('auth'); //create asset 
@@ -49,7 +50,9 @@ route::post('/home/file/fileissues','AssetsController@fileIssues')->middleware('
 route::post('/home/issue/file','AssetsController@file')->middleware('auth'); //fileissue
 route::post('/home/requestnewasset/newasset','AssetsController@newasset')->middleware('auth'); //request for a new asset
 route::post('/home/newassetrequests/create','AssetsController@createNew')->middleware('auth'); 
+route::post('/home/newassetrequests/approve','AssetsController@approve')->middleware('auth'); 
 route::post('/home/requests/grant','AssetsController@edit')->middleware('auth');
 route::post('home/viewissues/marksolved','AssetsController@markSolved')->middleware('auth');
 route::post('/home/requests/returned','AssetsController@returned')->middleware('auth');
+route::post('/home/ordersRecieved/done','AssetsController@ordersRecieved')->middleware('auth');
 

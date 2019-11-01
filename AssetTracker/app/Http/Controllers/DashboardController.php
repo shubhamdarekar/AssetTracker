@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\issuedBy;
 use App\userIssues;
 use App\newassetrequests;
+use App\orders;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -67,6 +69,12 @@ class DashboardController extends Controller
         return view('dashboard.viewIssues')->with('viewIssues',$viewIssues);
     }
 
+    public function ordersRecieved()
+    {
+        $orders = orders::where('deliveredInGoodState','=',0)->orderBy('id','DESC')->get();
+        return view('dashboard.ordersRecieved')->with('orders',$orders);
+    }
+
     public function assignrole(){
         return view('dashboard.assignRole');
     }
@@ -76,12 +84,17 @@ class DashboardController extends Controller
     }
 
     public function userRequests(){
-        $requests = issuedBy::where('itemGranted','=',0)->orderBy('id','DESC')->get();
+        
+        $requests = issuedBy::where([
+            ['itemGranted','=',0],
+            ['userId','=',Auth::user()->id]])->orderBy('id','DESC')->get();
         return view('dashboard.userRequests')->with('requests',$requests);
     }
 
     public function userGranted(){
-        $grants = issuedBy::where('itemGranted','=',1)->orderBy('id','DESC')->get();
+        $grants = issuedBy::where([
+            ['itemGranted','=',1],
+            ['userId','=',Auth::user()->id]])->orderBy('id','DESC')->get();
         return view('dashboard.userGranted')->with('grants',$grants);   
     }
 }
