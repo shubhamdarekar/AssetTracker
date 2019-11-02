@@ -240,6 +240,7 @@
         <a href="/home/requests"><i class="fa fa-bell-o" aria-gidden="true"> Grant Asset</i></a>
         <a href="/home/return"><i class="fa fa-arrow-circle-left">  Return Assets</i></a>
     @endif
+    <a href="/home/viewassets"><i class="fa fa-eye" aria-hidden="true">  System Assets</i></a>
     @if(Auth::user()->role == 1 || Auth::user()->role == 2)
     <a href="/home/file"><i class="fa fa-exclamation" aria-hidden="true">  Report a problem</i></a>
     @endif

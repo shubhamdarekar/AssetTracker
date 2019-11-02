@@ -40,6 +40,7 @@ route::get('/home/return','DashboardController@return')->middleware('auth');
 route::get('/home/userrequests','DashboardController@userRequests')->middleware('auth');
 route::get('/home/usergranted','DashboardController@userGranted')->middleware('auth');
 route::get('/home/ordersRecieved','DashboardController@ordersRecieved')->middleware('auth');
+route::get('/home/viewassets','DashboardController@viewAssets')->middleware('auth');
 
 route::post('/home/issue/store','AssetsController@store')->middleware('auth'); //issue asset
 route::post('home/create/store','AssetsController@create')->middleware('auth'); //create asset 
@@ -55,4 +56,6 @@ route::post('/home/requests/grant','AssetsController@edit')->middleware('auth');
 route::post('home/viewissues/marksolved','AssetsController@markSolved')->middleware('auth');
 route::post('/home/requests/returned','AssetsController@returned')->middleware('auth');
 route::post('/home/ordersRecieved/done','AssetsController@ordersRecieved')->middleware('auth');
+route::post('/home/edit/update','AssetsController@update')->middleware('auth');
+
 
