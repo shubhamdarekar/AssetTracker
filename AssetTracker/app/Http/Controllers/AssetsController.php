@@ -13,6 +13,7 @@ use App\totalQuantity;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
 class AssetsController extends Controller
 {
     /**
@@ -225,9 +226,20 @@ class AssetsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $this->validate($request,[
+            'email' => 'required',
+            'currentpassword' => 'required',
+            'newpassword' => 'required'
+        ]);
+        // $email = $request->input('email');
+        // $currentpassword = $request->input('currentpassword', new MatchOldPassword]);
+        // $newpassword = $request->input('newpassword');   
+        DB::table('usersb ')->find(Auth::user()->id)->update(['password'=> Hash::make($request->newpassword)]);
+   
+        return redirect('/home')->with('success', ' Password successfully changed');
+        
     }
 
     /**

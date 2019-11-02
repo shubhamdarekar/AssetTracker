@@ -44,3 +44,4 @@ route::post('/home/requestnewasset/newasset','AssetsController@newasset'); //req
 route::post('/home/newassetrequests/create','AssetsController@createNew'); 
 route::post('/home/requests/grant','AssetsController@edit');
 route::post('home/viewissues/marksolved','AssetsController@markSolved');
+route::post('home/edit/update','AssetsController@update');
