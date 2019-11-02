@@ -118,7 +118,7 @@ class AssetsController extends Controller
                 return redirect('/home/issue')->with('error','Not Enough Assets available');
             } 
         }
-        else{
+        else{   
             return redirect('/home/issue')->with('error','0 Assetes available');
         }
     }
@@ -386,10 +386,7 @@ class AssetsController extends Controller
         $remain = $asset[0]['remainingQuantity'];
         // echo $remain;
 
-<<<<<<< Updated upstream
         $id = issuedBy::where('itemIssued','=',$assetId);
-=======
->>>>>>> Stashed changes
         DB::table('assets')->where('name','=',$assetname)
                            ->update(['remainingQuantity' => ($remain + $quantity)]);
 

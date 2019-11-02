@@ -15,11 +15,12 @@
         }
     </style>
     <div style="width:inherit;height:inherit;vertical-align:middle;" align="center">
+        <h1><strong>Change Role</strong></h1>
         <span class="border">
             <form action="/home/changedRole" method="POST">
                 @csrf
                 <div class="form-group row">
-                        <label class="col-3">Name of the Users</label>
+                        <label class="col-3 col-lg-offset-3">Name of the Users</label>
                         <select name="userDropdown" id="dropdown" class="col-2">
                                 @foreach ($users as $user)
                         <option value="{{$user->id}}">{{$user->name}} : {{$user->role}} 
@@ -42,8 +43,7 @@
                     </div>
                     <br>
                     <div class="form-group row">
-                        if
-                        <label class="col-3">Role</label>
+                        <label class="col-3 col-lg-offset-3">Role</label>
                         <select name="roleDropdown" class="col-2">
                                 <option value="0">0: System Admin</option>
                                 <option value="1">1: Student</option>
@@ -55,7 +55,7 @@
                                 <option value="5">5: Purchase Officer</option>
                         </select>
                     </div>
-                    <div class = "row col-4 form-group">
+                    <div class = "row col-4 form-group col-lg-offset-12">
                                 <button type="submit" class = "btn btn-primary" name="submit">Submit</button>
                     </div>
             </form>

@@ -13,7 +13,7 @@
 </style>
 <div class="container" align="center">
     <br><br>
-    <h1>Assets Requested For </h1>
+    <h1><strong>Requested</strong></h1>
     <br>
     <table class="table">
         <tr>
@@ -21,11 +21,11 @@
             <th>Asset</th>
             <th>Quantity</th>
         </tr>
+        <?php $id = 1 ?>
         @foreach($requests as $request) 
         <?php
             $asset = asset::find($request->itemIssued);
             // echo $asset;
-            $id = 1;
         ?>
         <tr>
             <td>{{$id}}</td>

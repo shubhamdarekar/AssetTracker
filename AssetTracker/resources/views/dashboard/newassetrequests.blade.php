@@ -3,9 +3,17 @@
 ?>
 @extends('layouts.app')
 @section('content')
-    <link rel="stylesheet" href="{{asset('css/app/css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <style>
+        *{
+            text-decoration: none;
+        }
+        label{
+            font-size: 20px;
+        }
+    </style>
     <div style="width:inherit;height:inherit;vertical-align:middle;" align="center">
-            <h1 style="text-align: center"><strong>New Asset Requests</strong></h1>
+    <h1 style="text-align: center"><strong> New Asset Requests</strong></h1>
             <br><br>
             @foreach($newassetrequests as $new)
                 <?php 

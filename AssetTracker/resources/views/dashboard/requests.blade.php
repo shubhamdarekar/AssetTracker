@@ -19,8 +19,7 @@
     }
 </style>
 <div style="width:inherit;height:inherit;vertical-align:middle" align="center">
-    <br><br><br><br>
-    <h1 style="text-align: center"><strong>Asset Requests</strong></h1>
+    <h1 style="text-align: center"><strong>Grant Assets</strong></h1>
     <br><br>
         @foreach ($issued as $id)
             <?php //echo var_dump($id);?>

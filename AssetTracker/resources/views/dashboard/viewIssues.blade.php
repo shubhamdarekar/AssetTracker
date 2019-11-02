@@ -2,9 +2,16 @@
     use App\User;
 ?>
 @extends('layouts.app')
-
 @section('content')
-
+<link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <style>
+        *{
+            text-decoration: none;
+        }
+        label{
+            font-size: 20px;
+        }
+    </style>
 <div style="width:inherit;height:inherit;vertical-align:middle;" align="center">
     <h1 style="text-align: center"><strong>User Problems</strong></h1>
     <br><br>

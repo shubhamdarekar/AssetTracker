@@ -178,7 +178,7 @@
               document.getElementById("maincontent").style.marginLeft = "0%";
               document.getElementById("maincontent").style.width = "100%";
               ;
-              
+
           }
           else{
             
@@ -192,7 +192,7 @@
     
       </script>
 
-  <div class="w3-bar" style="height: 50px;background-color: rgb(52,165,217);">
+  <div class="w3-bar" style="height: 50px;background-color: rgb(52,165,217);" >
   @auth
     <span class="w3-bar-item" style="font-size:30px;cursor:pointer" onclick="openNav()" id="sidenavButton">&#9776</span>
   @endauth
@@ -202,15 +202,15 @@
       <ul class = "navbar-nav mr-autostyle" style="float:right;margin-right:50px;list-style-type:none;">
           <li class="nav-item">
             @auth
-              <a class="navbar-brand" style="color:black;" href="\logout">Logout</a>                
+              <a class="navbar-brand" style="color:black;" href="\logout"><i class="fa fa-sign-out">Logout</i></a>                
             @endauth
             </li>
             @guest
             <li>
-                <a class="nav-item" style="color:black;" href="\login">Login</a>               
+                <a class="nav-item" style="color:black;" href="\login"> </a>               
               </li>
             <li>
-            <a class="nav-item" style="color:black;" href="\register">Register</a>
+            <a class="nav-item" style="color:black;" href="\register"><i class="fa fa-user-plus">  Register</i></a>
           </li>
             @endguest
             
@@ -250,7 +250,7 @@
         <a href="/home/purchase"><i class="fa fa-shopping-cart" aria-gidden="true">  Place Order For current assets</i></a>
     @endif
     @if(Auth::user()->role==5)
-        <a href="/home/ordersRecieved"><i class="fa fa-shopping-cart" aria-gidden="true">Orders Status </i></a>
+        <a href="/home/ordersRecieved"><i class="fa fa-tasks" aria-gidden="true">  Order Status </i></a>
     @endif
     <hr style="margin-left:7.5%;width:85%">
     <a href="/home/edit"><i class="fa fa-pencil" aria-gidden="true"> Edit Profile</i></a>
@@ -258,7 +258,7 @@
 @endif
   @endauth
 
-  <div id="maincontent" style="width:100%;transition : 0.5s;margin-left:230px;background-color: white;">
+  <div id="maincontent" style="width:100%;transition : 0.5s;margin-left:230px;margin-top:50px;">
   @include('layouts.messages')
   @yield('content')
   </div>
