@@ -51,7 +51,7 @@
                 position: relative;
                 width:100%;
                 height: 100%;
-                transition: all 0.3s linear;
+                transition: all 0.5s linear;
                 transform-style: preserve-3d;
                 border-radius: 45px;
             }
@@ -378,21 +378,21 @@
                         <div class="navbar-nav">
                 @if(Route::has('login'))
                     @auth
-                        <a class="nav-item nav-link" href="{{ url('/home') }}">Home</a>
+                        <a class="nav-item nav-link" href="{{ url('/home') }}"><i class="fa fa-home">Home</i></a>
                     @else
-                        <a class="nav-item nav-link" href="{{ url('login') }}">Login</a>
+                        <a class="nav-item nav-link" href="{{ url('login') }}"><i class="fa fa-sign-in">Login</i></a>
                             @if(Route::has('register'))
-                                <a class="nav-item nav-link" href="{{ url('register') }}">Register</a>
+                                <a class="nav-item nav-link" href="{{ url('register') }}"><i class="fa fa-user-plus">Register</i></a>
                             @endif
                     @endauth
                 @endif
-                    <a class="nav-item nav-link" href="#about">About</a>
+                    <a class="nav-item nav-link" href="#about"><i class="fa fa-info-circle">About</i></a>
 
-                    <a class="nav-item nav-link" href="#contact">Team</a>
+                    <a class="nav-item nav-link" href="#contact"><i class="fa fa-users">Team</i></a>
                     </div>
                 @auth
                 <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="\logout">LogOut</a>
+                        <a class="nav-item nav-link" href="\logout"><i class="fa fa-sign-out">Logout</i></a>
                 </div> 
                 @endauth
                 </div>
@@ -468,7 +468,8 @@
                         </div>
                     </div>
             </div>
-            <div class = "col-lg-12" id="contact">
+            <footer>
+                <div class = "col-lg-12" id="contact">
                 <div style="background-color:#191919; width:100%; height:750px">
                     <div style="-ms-flex-align: center;
                     align-items: center;
@@ -536,6 +537,7 @@
                         <div style="color:white;text-align:center;font-size:14px;">Copyright © 2019. All Rights Reserved.</div> 
                     </div>
         </div>
+            </footer>
         <script type="text/javascript">
             $(document).ready(function() {
                $.localScroll({duration:800});

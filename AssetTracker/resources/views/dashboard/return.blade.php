@@ -20,7 +20,6 @@
     }
 </style>
 <div style="width:inherit;height:inherit;vertical-align:middle" align="center">
-    <br><br><br><br>
     <h1 style="text-align: center"><strong>Return Assets</strong></h1>
     <br><br>
         @foreach ($return as $id)
@@ -44,7 +43,7 @@
                     <div class="card-body">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                    <input class="form-control" type="text" name="id" value="{{$id->id}}" readonly style="text-align: center">
+                                    <input class="form-control" type="text" name="id" value="{{$id->id}}" readonly style="text-align: center" hidden>
                                 </div>
                             <div class="form-group">
                                 <input class="form-control" type="text" name="asset" value="{{$assetname[0]['name']}}" readonly style="text-align: center">

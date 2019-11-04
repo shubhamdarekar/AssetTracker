@@ -15,6 +15,7 @@
         }
     </style>
     <div style="width:inherit;height:inherit;vertical-align:middle;" align="center">
+        <h1><strong>Assign Role</strong></h1>
         <span class="border">
             <form action="/home/assignedRole" method="POST">
                 @csrf

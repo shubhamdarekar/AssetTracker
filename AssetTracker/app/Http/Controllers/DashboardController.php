@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\issuedBy;
+use App\asset;
 use App\userIssues;
 use App\newassetrequests;
 use App\orders;
@@ -81,6 +82,11 @@ class DashboardController extends Controller
 
     public function changerole(){
         return view('dashboard.changeRole');
+    }
+
+    public function viewAssets(){
+        $assets = asset::get();
+        return view('dashboard.viewAvailableAssets')->with('assets',$assets);
     }
 
     public function userRequests(){

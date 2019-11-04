@@ -3,11 +3,11 @@
 @section('content')
 <script>
     document.getElementById("maincontent").style.marginLeft=0px;
-    </script>
+</script>
 <div>
     <div class="row justify-content">
         <div class="col-md-8">
-            <div class="card" style="margin-top:85px;;">
+            <div class="card" style="margin-top:85px;">
                 <div style="font-size:50px;margin-bottom:0px;margin-left:350px; font-family:georgia;">{{ __('Register') }}</div>
 
                 <div class="card-body">

@@ -1,20 +1,18 @@
 @extends('layouts.app')
-{{-- <link rel="stylesheet" href="{{ asset('css/app.css')}}"> --}}
+<link rel="stylesheet" href="{{ asset('css/app.css')}}">
 @section('content')
+<script>
+    document.getElementById("maincontent").style.marginLeft=0px;
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<div  class="border" style="height:fit-content;padding:10px;">
-    <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="login" style="transform: translateX(15vw);
-       margin-top:0px;">
-                <div class="card-header" style="font-size:60px;margin-bottom:25px;margin-left:-25px; font-family:georgia;">{{ __('Login') }}</div>
+            <div class="card" style="margin-top: 10%;">
+                <div class="login" style="">
+                <div class="card-header" style="font-size:50px;margin-bottom:0px;margin-left:0px; font-family:georgia;background-color: white;border:none;text-align: center">{{ __('Login') }}</div>
                 </div>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-                    <div class="container3">
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right"style="font-family:georgia;">{{ __('E-Mail Address') }}</label>
 
@@ -45,16 +43,9 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary" style="width:150px; font-size:75%; margin-left: 16px;margin-top:20px;font-family:georgia;">
+                                <button type="submit" class="btn btn-primary" style="width:150px; font-size:75%; margin-left: 16px;margin-top:20px;margin-bottom:10%;georgia;">
                                     {{ __('Login') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request')}}" style="margin-top:20px;
-                                    margin-left: 25px;font-family:georgia;">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </div>
